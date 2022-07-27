@@ -6,7 +6,7 @@ html,body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("C:/development/my-app/src/BackGround_img.jpg");
+  background-image: url("C:/development/my-app/src/assets/BackGround_img.jpg");
   background-color: #cccccc;
 }
 
