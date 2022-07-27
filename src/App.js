@@ -36,7 +36,7 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Landpage />}></Route>
-          <Route path="/LandPage" element={<Landpage />}></Route>
+          <Route path="/HomePage" element={<HomePage />}></Route>
           <Route path="/ServicePage" element={<ServicesPage />}></Route>
         </Routes>
       </BrowserRouter>
