@@ -5,7 +5,9 @@
     margin-top: 10px;
     background-repeat:no-repeat;
   }
-  
+
+
+
 .logo-name{
     color: #600;
     font-weight: bold;
@@ -60,7 +62,14 @@ li a {
     padding: 10px;
     text-decoration: none;
   }
-  
+
+  dt a {
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(5, 4, 4);
+    text-decoration: none;
+  }
+
+
 li :hover {
     background-color: #8ee3ee;
   }
@@ -84,7 +93,7 @@ a {
     background: #5e8292;
     color: #000000;
     text-align: center;
-    height: 30px;
+    height: 40px;
     width: 100%;
     bottom: 0px;
     left: 0px;

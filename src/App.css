@@ -7,6 +7,15 @@
   background-repeat:no-repeat;
 }
 
+.btn {
+  border: none;
+  margin-top: 9px ;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+.default {color: black;}
+
 .myli {
   float: right;
   margin-right: 20px;
@@ -73,36 +82,6 @@ a {
   width: 100%;
 }
 
-.footer{
-  margin-top: 49%;
-  background: #83b1c4;
-  color: #d3d3d3;
-  height: 300px;
-}
-
-.footer .footer-bottom{
-  background: #5e8292;
-  color: #000000;
-  text-align: center;
-  height: 30px;
-  width: 100%;
-  bottom: 0px;
-  left: 0px;
-  padding-top: 10px;
-}
-
-.footer .footer-content{
-
-  height: 286px;
-  display: flex;
-}
-
-.footer .footer-content .footer-section{
-  flex: 1;
-  padding: 25px;
-  color: #000000;;
-
-}
 
 .page-wrapper{
   min-height: 100%;

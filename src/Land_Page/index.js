@@ -81,13 +81,13 @@ function Landpage() {
               <input
                 type="email"
                 name="email"
-                class="text-input contact-input"
+                className="text-input contact-input"
                 placeholder="Your Email Password..."
               ></input>
               <br />
               <textarea
                 name="Message"
-                class="text-input contact-input"
+                className="text-input contact-input"
                 placeholder="Your Message..."
               ></textarea>
               <br />
@@ -106,22 +106,6 @@ function Landpage() {
           &copy;<a href> hassaan.bs25@gmail.com</a> || Hehe
         </div>
       </div>
-
-      {/* <img src={logo} className="App-logo" alt="logo" />
-        <input
-          type="text"
-          name="Search"
-          placeholder="Type here to Search"
-          autofocus
-        ></input>
-        <a
-          className="App-link"
-          href="src\Comp_1\index.js"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          boop
-        </a> */}
     </div>
   );
 }
