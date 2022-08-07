@@ -5,7 +5,7 @@ import "./styles.css";
 import { FaUser } from "react-icons/fa";
 
 function Header(props) {
-  const { handleLogin, handleSignUp } = props;
+  const { toggleLogin, toggleSignUp } = props;
 
   return (
     <>
@@ -27,12 +27,12 @@ function Header(props) {
             <Link to="/ServicePage">Contact Us</Link>
           </li>
           <div className="myli">
-            <Button className="btn default" onClick={handleSignUp}>
+            <Button className="btn default" onClick={toggleLogin}>
               Sign Up
             </Button>
           </div>
           <div className="myli">
-            <Button className="btn default" onClick={handleLogin}>
+            <Button className="btn default" onClick={toggleSignUp}>
               <FaUser /> Log In
             </Button>
           </div>

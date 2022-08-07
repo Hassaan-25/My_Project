@@ -12,13 +12,13 @@ function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
+  const toggleLogin = () => setShowLogin((prevState) => !prevState);
+  const toggleSignUp = () => setShowSignup((prevState) => !prevState);
+
   return (
     <div className="wrapper">
       <BrowserRouter>
-        <Header
-          handleLogin={() => setShowLogin(true)}
-          handleSignUp={() => setShowSignup(true)}
-        />
+        <Header toggleLogin={toggleLogin} toggleSignUp={toggleSignUp} />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/HomePage" element={<HomePage />}></Route>
@@ -30,12 +30,12 @@ function App() {
 
       <Modal show={showLogin} onHide={() => setShowLogin(false)}>
         <Modal.Body>
-          <LoginPage />
+          <LoginPage onClose={toggleLogin} />
         </Modal.Body>
       </Modal>
       <Modal show={showSignup} onHide={() => setShowSignup(false)}>
         <Modal.Body>
-          <SignUpPage />
+          <SignUpPage onClose={toggleSignUp} />
         </Modal.Body>
       </Modal>
     </div>

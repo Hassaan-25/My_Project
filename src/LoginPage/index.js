@@ -6,7 +6,8 @@ import Cookie from "js-cookie";
 import axios from "axios";
 import "./styles.css";
 
-function LoginPage() {
+function LoginPage(props) {
+  const { onClose } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
@@ -53,26 +54,6 @@ function LoginPage() {
       <div className="error">{errorMessages.message}</div>
     );
 
-  const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
-  );
-
   const handleformSubmit = (e) => {
     e.preventDefault();
     const reqBody = {
@@ -81,7 +62,8 @@ function LoginPage() {
     };
     login(reqBody)
       .then((res) => {
-        const token = res?.session?.access_token;
+        console.log(res);
+        const token = res?.token;
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         Cookie.set("access_token", `${token}`, { expires: 14 });
         // navigate("/");
@@ -90,6 +72,38 @@ function LoginPage() {
         alert("Error while login ...");
       });
   };
+
+  const renderForm = (
+    <div className="form">
+      <form onSubmit={handleformSubmit}>
+        <div className="input-container">
+          <label>Username </label>
+          <input
+            type="text"
+            name="uname"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {renderErrorMessage("uname")}
+        </div>
+        <div className="input-container">
+          <label>Password </label>
+          <input
+            type="password"
+            name="pass"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {renderErrorMessage("pass")}
+        </div>
+        <div className="button-container">
+          <input type="submit" />
+        </div>
+      </form>
+    </div>
+  );
 
   return (
     <div className="login-form">
