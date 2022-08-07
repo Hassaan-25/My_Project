@@ -1,9 +1,10 @@
 import "./styles.css";
 
 import React, { useState } from "react";
-
+import { login } from "../helpers/api";
 import Cookie from "js-cookie";
 import axios from "axios";
+import "./styles.css";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -83,7 +84,7 @@ function LoginPage() {
         const token = res?.session?.access_token;
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         Cookie.set("access_token", `${token}`, { expires: 14 });
-        navigate("/");
+        // navigate("/");
       })
       .catch(() => {
         alert("Error while login ...");
@@ -92,7 +93,7 @@ function LoginPage() {
 
   return (
     <div className="login-form">
-      <div className="title">Sign In</div>
+      <div className="title">Login</div>
       {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
     </div>
   );

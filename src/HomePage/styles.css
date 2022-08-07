@@ -1,3 +1,50 @@
-.Home{
-    padding: 0px;
+.home{
+  height: 500px;
+  width: 99vw;
+  display: flex;
+  justify-content: space-around;
+  }
+
+  .home-wrapper{
+    background-image: url(../assets/BackGround_img.jpg);
+    background-size: cover;
+  }
+
+
+  .iform {
+    background-color: rgba(240, 248, 255, 0.274);
+    font-family: Montserrat,sans-ser;
+    margin: 300px 15px 0px 15px;
+    height: 200px;
+    border-radius: 20px;
+    opacity: 1px;
+  }
+
+  .labl{
+    padding: 19px;
+  }
+
+
+  .heading {
+    color: #600;
+    font-weight: bold;
+    font-size: large;
+  }
+
+.btn-container{
+  display: flex;
+  margin: 10px;
+  float: right;
 }
+
+.btn-container .btn-wrap{
+  flex: 1;
+}
+
+.mybtn {
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 10px;
+}
+
