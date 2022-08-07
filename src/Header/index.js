@@ -27,12 +27,12 @@ function Header(props) {
             <Link to="/ServicePage">Contact Us</Link>
           </li>
           <div className="myli">
-            <Button className="btn default" onClick={toggleLogin}>
+            <Button className="btn default" onClick={toggleSignUp}>
               Sign Up
             </Button>
           </div>
           <div className="myli">
-            <Button className="btn default" onClick={toggleSignUp}>
+            <Button className="btn default" onClick={toggleLogin}>
               <FaUser /> Log In
             </Button>
           </div>

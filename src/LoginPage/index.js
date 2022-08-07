@@ -60,7 +60,10 @@ function LoginPage(props) {
       email,
       password,
     };
-    login(reqBody)
+    const body = JSON.stringify({
+      user: reqBody,
+    });
+    login(body)
       .then((res) => {
         console.log(res);
         const token = res?.token;
