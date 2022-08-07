@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-
 import "./styles.css";
 
+import React, { useState } from "react";
+
+import Cookie from "js-cookie";
+import axios from "axios";
+
 function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -66,6 +71,24 @@ function LoginPage() {
       </form>
     </div>
   );
+
+  const handleformSubmit = (e) => {
+    e.preventDefault();
+    const reqBody = {
+      email,
+      password,
+    };
+    login(reqBody)
+      .then((res) => {
+        const token = res?.session?.access_token;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        Cookie.set("access_token", `${token}`, { expires: 14 });
+        navigate("/");
+      })
+      .catch(() => {
+        alert("Error while login ...");
+      });
+  };
 
   return (
     <div className="login-form">
