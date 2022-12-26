@@ -1,0 +1,47 @@
+  .btn {
+    border: none;
+    margin-top: 6px ;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+.main {
+    background-color: #ddf4f8;
+    list-style-type: none;
+    margin: 0rem;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    overflow: hidden;
+  }
+
+
+.myli {
+    float: left;
+  }
+
+
+.myli a {
+    font-size: 20px;
+    display: block;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(5, 4, 4);
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .btncontainer {
+    margin-top: 10px;
+    float: right;
+    margin-right: 20px;
+  }
+  

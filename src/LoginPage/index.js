@@ -1,64 +1,60 @@
-import React, { useState } from "react";
-
 import "./styles.css";
 
-function LoginPage() {
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+import React, { useState } from "react";
+import { login } from "../helpers/api";
+import Cookie from "js-cookie";
+import axios from "axios";
+import "./styles.css";
 
-  const database = [
-    {
-      username: "user1",
-      password: "pass1",
-    },
-    {
-      username: "user2",
-      password: "pass2",
-    },
-  ];
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
+function LoginPage(props) {
+  const { onClose } = props;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleformSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    const reqBody = { user: JSON.stringify(user) };
+    login(reqBody)
+      .then((res) => {
+        const token = res?.Token;
+        onClose();
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        Cookie.set("access_token", `${token}`, { expires: 14 });
+        // navigate("/");
+
+        alert("User logged in Successfully");
+      })
+      .catch(() => {
+        alert("Error while login ...");
+      });
   };
-
-  const handleSubmit = (event) => {
-    //Prevent page reload
-    event.preventDefault();
-
-    var { uname, pass } = document.forms[0];
-
-    // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
-      }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
-    }
-  };
-
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
 
   const renderForm = (
     <div className="form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleformSubmit}>
         <div className="input-container">
           <label>Username </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
+          <input
+            type="text"
+            name="uname"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
         <div className="input-container">
           <label>Password </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
+          <input
+            type="password"
+            name="pass"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <div className="button-container">
           <input type="submit" />
@@ -69,8 +65,8 @@ function LoginPage() {
 
   return (
     <div className="login-form">
-      <div className="title">Sign In</div>
-      {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+      <div className="title">Login</div>
+      {renderForm}
     </div>
   );
 }
