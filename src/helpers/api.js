@@ -11,7 +11,7 @@ export const signup = async (payload) => {
 
 export const login = async (payload) => {
   try {
-    const result = await axiosInstance.post(`/login`, payload);
+    const result = await axiosInstance.post(`/user/signIn`, payload);
     return result.data;
   } catch (error) {
     throw error.response;

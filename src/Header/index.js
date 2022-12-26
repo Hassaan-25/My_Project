@@ -9,35 +9,33 @@ function Header(props) {
 
   return (
     <>
-      <nav>
-        <ul className="main">
-          <li>
-            <Link to="/HomePage">Home</Link>
-          </li>
-          <li>
-            <Link to="/LandPage">Fascilities</Link>
-          </li>
-          <li>
-            <Link to="/ServicePage">Services</Link>
-          </li>
-          <li>
-            <Link to="/ServicePage">Orders</Link>
-          </li>
-          <li>
-            <Link to="/ServicePage">Contact Us</Link>
-          </li>
-          <div className="myli">
-            <Button className="btn default" onClick={toggleSignUp}>
-              Sign Up
-            </Button>
-          </div>
-          <div className="myli">
-            <Button className="btn default" onClick={toggleLogin}>
-              <FaUser /> Log In
-            </Button>
-          </div>
-        </ul>
-      </nav>
+      <ul className="main">
+        <li className="myli">
+          <Link to="/HomePage">Home</Link>
+        </li>
+        <li className="myli">
+          <Link to="/LandPage">Fascilities</Link>
+        </li>
+        <li className="myli">
+          <Link to="/ServicePage">Services</Link>
+        </li>
+        <li className="myli">
+          <Link to="/ServicePage">Orders</Link>
+        </li>
+        <li className="myli">
+          <Link to="/ServicePage">Contact Us</Link>
+        </li>
+        <div className="btncontainer">
+          <Button className="btn default" onClick={toggleSignUp}>
+            Sign Up
+          </Button>
+        </div>
+        <div className="btncontainer">
+          <Button className="btn default" onClick={toggleLogin}>
+            <FaUser /> Log In
+          </Button>
+        </div>
+      </ul>
     </>
   );
 }

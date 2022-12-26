@@ -1,23 +1,9 @@
-.My-App {
-    background-color: #cccccc;
-    background-size: "cover";
-    height: 100vh;
-    margin-top: 10px;
-    background-repeat:no-repeat;
-  }
-
-
-
 .logo-name{
     color: #600;
     font-weight: bold;
     font-size: large;
   }
   
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
   
 .tarea{
   margin-top: 2px;
@@ -25,49 +11,12 @@
   width: 191px;
   }
   
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  
-  }
 
-li {
-    float: left;
-  }
-
-.myli {
-  float: right;
-  margin-right: 20px;
-}
-
-.myli a{
-  text-decoration: none;
-  font-size: 20px;
-  display: block;
-  font-family:Arial, Helvetica, sans-serif;
-  color: rgb(5, 4, 4);
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-}
-
-
-li a {
-    font-size: 20px;
-    display: block;
-    font-family:Arial, Helvetica, sans-serif;
-    color: rgb(5, 4, 4);
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-  }
-
-  dt a {
+  li a {
     font-family:Arial, Helvetica, sans-serif;
     color: rgb(5, 4, 4);
     text-decoration: none;
+    line-height: 2.5;
   }
 
 
@@ -112,14 +61,12 @@ a {
     color: #000000;;
   
   }
-  
-.navigation-bar{
-    position:relative;
-    margin:0;
-    padding:0;
-    width: 100%;
-    list-style-type: none;
-    overflow:hidden;
-    background-color:#f8f9ff;
+
+  .footerbtn{
+    padding: 2px;
+    color: #8ee3ee;
+    background-color: darkturquoise;
   }
+  
+
   

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../Footer";
 import "./styles.css";
 import { Button } from "react-bootstrap";
@@ -33,12 +33,12 @@ function HomePage() {
                     type="text"
                   />
                 </label>
-              </form>
-              <div className="btn-container">
-                <div className="btn-wrap">
-                  <Button className="mybtn">Search Donors</Button>
+                <div className="btn-container">
+                  <div className="btn-wrap">
+                    <Button className="mybtn">Search Donors</Button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>

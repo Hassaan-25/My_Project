@@ -31,21 +31,17 @@ function SignUpPage(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName, lastName, email, password, confirmPassword);
-    const reqBody = {
+    const user = {
       first_name: firstName,
       last_name: lastName,
       email,
       password,
     };
+    const reqBody = { user: JSON.stringify(user) };
     signup(reqBody)
       .then((res) => {
-        console.log(res);
         onClose?.();
-        // const token = res?.session?.access_token;
-        // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        // Cookie.set("access_token", `${token}`, { expires: 14 });
-        // navigate("/");
+        alert("User Registered Successfully");
       })
       .catch(() => {
         alert("Error while Signup ...");

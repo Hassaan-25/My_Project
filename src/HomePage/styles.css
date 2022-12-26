@@ -1,5 +1,5 @@
 .home{
-  height: 500px;
+  height: 475px;
   width: 99vw;
   display: flex;
   justify-content: space-around;
@@ -14,8 +14,9 @@
   .iform {
     background-color: rgba(240, 248, 255, 0.274);
     font-family: Montserrat,sans-ser;
-    margin: 300px 15px 0px 15px;
-    height: 200px;
+    font-weight: bold;
+    margin: 300px 10px 0px 10px;
+    height: 175px;
     border-radius: 20px;
     opacity: 1px;
   }

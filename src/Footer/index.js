@@ -31,10 +31,12 @@ function Footer() {
             </span>
             <span>
               <i>
+                {" "}
+                &nbsp;
                 <FaEnvelope />
                 {""}
               </i>
-              &nbsp; huihuihui@gmail.com
+              &nbsp; BloodFinder@gmail.com
             </span>
           </div>
           <div className="Socials">
@@ -42,38 +44,41 @@ function Footer() {
               <FaFacebook />
             </i>
             <i>
+              &nbsp;
               <FaLinkedin />
             </i>
             <i>
+              &nbsp;
               <FaWhatsapp />
             </i>
             <i>
+              &nbsp;
               <FaYoutube />
             </i>
           </div>
         </div>
         <div className="footer-section 2">
           <h1 className="logo-name">Quick Links</h1>
-          <dl>
-            <dt>
+          <ul>
+            <li>
               <a href="hehe0">Events</a>
-            </dt>
-            <dt>
+            </li>
+            <li>
               <a href="hehe1">Teams</a>
-            </dt>
-            <dt>
+            </li>
+            <li>
               <a href="hehe2">Members</a>
-            </dt>
-            <dt>
+            </li>
+            <li>
               <a href="hehe2">Details</a>
-            </dt>
-            <dt>
+            </li>
+            <li>
               <a href="hehe2">Conditions</a>
-            </dt>
-            <dt>
+            </li>
+            <li>
               <a href="hehe3">Terms And Condition</a>
-            </dt>
-          </dl>
+            </li>
+          </ul>
         </div>
         <div className="footer-section 3">
           <h1 className="logo-name">Contact</h1>
@@ -91,7 +96,7 @@ function Footer() {
               placeholder="Your Message..."
             ></textarea>
             <br />
-            <button type="submit" className="btn">
+            <button type="submit" className="footerbtn">
               <i>
                 <FaEnvelope />
                 {""}
