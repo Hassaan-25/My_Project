@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import "./styles.css";
 import { FaUser } from "react-icons/fa";
 
@@ -10,30 +9,33 @@ function Header(props) {
   return (
     <>
       <ul className="main">
-        <li className="myli">
+        <li className="myli ">
+          <Link to="/HomePage" className="mylogo"></Link>
+        </li>
+        <li className="myli hover-underline-animation">
           <Link to="/HomePage">Home</Link>
         </li>
-        <li className="myli">
-          <Link to="/LandPage">Fascilities</Link>
+        <li className="myli hover-underline-animation">
+          <Link to="/Facilities">Facilities</Link>
         </li>
-        <li className="myli">
+        <li className="myli hover-underline-animation">
           <Link to="/ServicePage">Services</Link>
         </li>
-        <li className="myli">
+        <li className="myli hover-underline-animation">
           <Link to="/ServicePage">Orders</Link>
         </li>
-        <li className="myli">
-          <Link to="/ServicePage">Contact Us</Link>
+        <li className="myli hover-underline-animation">
+          <Link to="/AboutUs">About Us</Link>
         </li>
         <div className="btncontainer">
-          <Button className="btn default" onClick={toggleSignUp}>
+          <button className="signup" onClick={toggleSignUp}>
             Sign Up
-          </Button>
+          </button>
         </div>
         <div className="btncontainer">
-          <Button className="btn default" onClick={toggleLogin}>
+          <button className="login" onClick={toggleLogin}>
             <FaUser /> Log In
-          </Button>
+          </button>
         </div>
       </ul>
     </>

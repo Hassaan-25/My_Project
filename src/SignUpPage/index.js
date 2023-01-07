@@ -126,7 +126,9 @@ function SignUpPage(props) {
           </div>
         </div>
         <div className="button-container">
-          <button type="submit">Submit</button>
+          <button className="signin_button" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>

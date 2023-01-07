@@ -4,30 +4,29 @@ input[type="password"] {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-button[type="submit"] {
-  margin-top: 10px;
+.signin_button[type="submit"] {
+  /* margin-top: 2px; */
   cursor: pointer;
   font-size: 15px;
-  background: #01d28e;
-  border: 1px solid #01d28e;
+  background: #F79CA4;
+  border: 1px solid #F07279;
   color: #fff;
   padding: 10px 20px;
+  border-radius: 18px;
 }
 
 
 
-button[type="submit"]:hover {
-  background: #6cf0c2;
+.signin_button:hover {
+  background: #F07279;
 }
 
-.login-form {
-  background-color: white;
-}
 
 .title {
   font-size: 25px;
   margin-bottom: 20px;
   text-align: center;
+  color: #6A6A6A;
 }
 
 .list-container {

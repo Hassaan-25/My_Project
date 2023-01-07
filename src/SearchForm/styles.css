@@ -1,0 +1,68 @@
+.home{
+  height: 350px;
+  width: 55%;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 2px;
+  }
+
+.home_img_container{
+  height: 315px;
+  width: 25%;
+  padding-left: 25px;
+  display: flex;
+  justify-content: space-around;
+  float: right ;
+  background: no-repeat;
+  background-size: contain;
+   background-image: url(../assets/doc.png);
+  }
+
+
+  .iform {
+    font-family: "Montserrat,sans-ser";
+    font-weight: bold;
+    margin: 125px 10px 0px 10px;
+    height: 175px;
+    border-radius: 20px;
+    opacity: 1px;
+  }
+
+  .labl{
+    padding: 19px;
+  }
+
+  .heading {
+    color: #f7979f;
+    font-weight: bold;
+  position: absolute;
+left: 122px;
+top: 60px;
+font-family: 'Inter', sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 50px;
+line-height: 115px;
+text-align: center;
+  }
+
+.btn-container{
+  display: flex;
+  margin: 10px;
+  float: right;
+}
+
+.btn-container .btn-wrap{
+  flex: 1;
+}
+
+.mybtn {
+  background: #1E2D50;
+    height: 46px;
+    width: 120px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: white;
+    border: 0px;
+}
+
