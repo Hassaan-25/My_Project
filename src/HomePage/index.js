@@ -1,49 +1,21 @@
-import React, { useEffect } from "react";
-import Footer from "../Footer";
 import "./styles.css";
-import { Button } from "react-bootstrap";
 
 function HomePage() {
   return (
     <>
-      <div className="home-wrapper">
-        <div className="home">
-          <div className="iform">
-            <div className="heading">Find The Best Blood Donor</div>
-            <div className="mylabel">
-              <form>
-                <label className="labl">
-                  Required Blood Group :
-                  <input placeholder="e.g A+,B+.." type="text" />
-                </label>
-
-                <label className="labl">
-                  City :
-                  <input placeholder="Enter City.." type="text" />
-                </label>
-
-                <label className="labl">
-                  Area Under :
-                  <input placeholder="Enter Area in Kms.." type="text" />
-                </label>
-                <label className="labl">
-                  Date :
-                  <input
-                    placeholder="When the blood is required.."
-                    type="text"
-                  />
-                </label>
-                <div className="btn-container">
-                  <div className="btn-wrap">
-                    <Button className="mybtn">Search Donors</Button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+      <div className="LandPage_image"></div>
+      <a href="https://play.google.com/store/apps/details?id=com.cube.arc.blood&hl=en&gl=US">
+        <div className="gplay"></div>
+      </a>
+      <a href="https://apps.apple.com/us/app/blood-donor-american-red-cross/id911428916">
+        <div className="aplay"></div>
+      </a>
+      <div className="text_big">Why do we use it?</div>
+      <div className="text_small">
+        A person who gives blood for transfusion, it is not permissible to sell
+        one’s blood or to pay the blood donor.
       </div>
-      <Footer />
+      <div className="Landpage_footer"></div>
     </>
   );
 }

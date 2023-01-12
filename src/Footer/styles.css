@@ -19,10 +19,9 @@
     line-height: 2.5;
   }
 
-
-li :hover {
+/* li :hover {
     background-color: #8ee3ee;
-  }
+  } */
   
 a {
     color: #000000;
@@ -33,13 +32,16 @@ a {
   }
   
 .footer{
-    background: #5ea5c4;
+    background: #f3c1c5;
     color: #d3d3d3;
     height: 300px;
+    width: 100%;
+    /* margin-left: 20px;
+    margin-right: 20px; */
   }
   
 .footer .footer-bottom{
-    background: #4f788a;
+    background: #f16f7a;
     color: #000000;
     text-align: center;
     height: 40px;
@@ -64,8 +66,12 @@ a {
 
   .footerbtn{
     padding: 2px;
-    color: #8ee3ee;
-    background-color: darkturquoise;
+    background: #B6555A;
+    border: 1px solid #c45c61;
+    color: white;
+    width: 100px;
+    height: 45px;
+    border-radius: 10px;
   }
   
 

@@ -1,5 +1,4 @@
 import "./styles.css";
-
 import React, { useState } from "react";
 import { login } from "../helpers/api";
 import Cookie from "js-cookie";
@@ -65,7 +64,7 @@ function LoginPage(props) {
 
   return (
     <div className="login-form">
-      <div className="title">Login</div>
+      <div className="title">Log In</div>
       {renderForm}
     </div>
   );

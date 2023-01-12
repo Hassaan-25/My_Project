@@ -19,14 +19,18 @@
     margin-top: 10px;
     cursor: pointer;
     font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
+    background:  #F79CA4;
+    border: 1px solid #F07279;;
     color: #fff;
     padding: 10px 20px;
   }
 
   input[type="submit"]:hover {
-    background: #6cf0c2;
+    background: #F07279;
+  }
+ 
+  input[type="submit"]{
+    border-radius: 20px;
   }
   
   .button-container {
@@ -51,6 +55,7 @@
     font-size: 25px;
     margin-bottom: 20px;
     text-align: center;
+    color: #6A6A6A;
   }
   
   .input-container {

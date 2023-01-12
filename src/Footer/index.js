@@ -101,15 +101,13 @@ function Footer() {
                 <FaEnvelope />
                 {""}
               </i>
-              Send
+              &nbsp; Send
             </button>
           </form>
         </div>
       </div>
 
-      <div className="footer-bottom">
-        &copy;<a href> hassaan.bs25@gmail.com</a> || Hehe
-      </div>
+      <div className="footer-bottom">&copy; CHEEMZ.008@gmail.com || Hehe</div>
     </div>
   );
 }

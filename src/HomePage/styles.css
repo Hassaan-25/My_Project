@@ -1,51 +1,74 @@
-.home{
-  height: 475px;
-  width: 99vw;
-  display: flex;
-  justify-content: space-around;
-  }
+.text_big{
+  position: absolute;
+width: 439px;
+height: 210px;
+left: 56px;
+top: 150px;
+font-family: 'Lato';
+font-style: normal;
+font-weight: 700;
+font-size: 96px;
+line-height: 115px;
+text-align: center;
 
-  .home-wrapper{
-    background-image: url(../assets/BackGround_img.jpg);
-    background-size: cover;
-  }
+color: #B6555A;
+}
+
+.text_small{
+position: absolute;
+width: 469px;
+height: 100px;
+left: 62px;
+top: 380px;
+
+font-family: 'Lato';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #7D7D7D;
+}
 
 
-  .iform {
-    background-color: rgba(240, 248, 255, 0.274);
-    font-family: Montserrat,sans-ser;
-    font-weight: bold;
-    margin: 300px 10px 0px 10px;
-    height: 175px;
-    border-radius: 20px;
-    opacity: 1px;
-  }
-
-  .labl{
-    padding: 19px;
-  }
-
-
-  .heading {
-    color: #600;
-    font-weight: bold;
-    font-size: large;
-  }
-
-.btn-container{
-  display: flex;
-  margin: 10px;
+.LandPage_image{
+  background-image: url(../assets/Lpimg.png);
+  background-size:100%;
+  font-family: Montserrat,sans-ser;
   float: right;
+  margin: -15px 15px 0px 15px;
+  height: 580px;
+  width: 50%;
+  opacity: 1px;
 }
 
-.btn-container .btn-wrap{
-  flex: 1;
+.gplay{
+  background-image: url(../assets/gplay.png);
+  background-color: white;
+  background-size: cover;
+  border: 0px;
+  position: absolute;
+  width: 146px;
+  height: 146px;
+  left: 116px;
+  top: 450px;
 }
 
-.mybtn {
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 10px;
+.aplay{
+  position: absolute;
+width: 133px;
+height: 40px;
+left: 260px;
+top: 503px;
+background-image: url(../assets/apstore.png);
+border-radius: 5px;
 }
 
+.Landpage_footer{
+  position: absolute;
+width: 1310px;
+height: 250px;
+/* left: -123.09px; */
+top: 600px;
+background-image: url(../assets/footer.png);
+background-size: cover;}

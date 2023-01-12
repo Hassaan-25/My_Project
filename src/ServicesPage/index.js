@@ -7,7 +7,6 @@ function ServicePage() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    console.log("Service Page Rendered");
     fetchUsers()
       .then((res) => {
         setUsers(res);
@@ -16,18 +15,19 @@ function ServicePage() {
         alert("Error while login ...");
       });
   }, []);
-  console.log(users);
 
   return (
     <>
-      <div className="myform">
-        {users.map((user) => {
-          console.log(user);
+      <div className="service_form">
+        <h2>Users Logged IN</h2>
+        {users.map((user, index) => {
           return (
-            <h1>
-              <span>{user.first_name}</span>
-              <span>{user.last_name}</span>
-            </h1>
+            <ul>
+              <li>
+                <span>{user.first_name}</span>
+                <span>&nbsp;{user.last_name}</span>
+              </li>
+            </ul>
           );
         })}
       </div>
