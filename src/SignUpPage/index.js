@@ -36,6 +36,7 @@ function SignUpPage(props) {
       last_name: lastName,
       email,
       password,
+      confirmPassword,
     };
     const reqBody = { user: JSON.stringify(user) };
     signup(reqBody)
