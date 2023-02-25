@@ -32,7 +32,7 @@ a {
   }
   
 .footer{
-    background: #f3c1c5;
+    background: #e6b5b9;
     color: #d3d3d3;
     height: 300px;
     width: 100%;
@@ -41,7 +41,7 @@ a {
   }
   
 .footer .footer-bottom{
-    background: #f16f7a;
+    background: #f87681;
     color: #000000;
     text-align: center;
     height: 40px;
@@ -52,14 +52,13 @@ a {
   }
   
 .footer .footer-content{
-  
     height: 286px;
     display: flex;
   }
   
 .footer .footer-content .footer-section{
     flex: 1;
-    padding: 25px;
+    padding: 23px;
     color: #000000;;
   
   }

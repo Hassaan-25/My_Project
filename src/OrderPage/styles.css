@@ -1,0 +1,10 @@
+.orders_wrapper{
+  border: 3px solid #fff;
+  padding: 20px;
+  height: 400px;
+}
+
+.map_container{
+  height: 100px;
+  width: 100px;
+}

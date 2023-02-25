@@ -1,4 +1,5 @@
 import axiosInstance from "./api.config";
+import Cookies from "js-cookie";
 
 export const signup = async (payload) => {
   try {
@@ -13,6 +14,14 @@ export const login = async (payload) => {
   try {
     const result = await axiosInstance.post(`/user/signIn`, payload);
     return result.data;
+  } catch (error) {
+    throw error.response;
+  }
+};
+
+export const logout = async () => {
+  try {
+    Cookies.remove(`access_token`);
   } catch (error) {
     throw error.response;
   }

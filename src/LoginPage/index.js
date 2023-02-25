@@ -23,6 +23,10 @@ function LoginPage(props) {
         onClose();
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         Cookie.set("access_token", `${token}`, { expires: 14 });
+        // setIsLoggedIn(true);
+        // axios.get("/api/user").then((res) => {
+        //   setUserName(res.data.username);
+        // });
         // navigate("/");
 
         alert("User logged in Successfully");
