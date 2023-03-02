@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import { logout } from "../helpers/api";
 import { FaUser } from "react-icons/fa";
-import Cookies from "js-cookie";
+import { useSelector, useDispatch } from "react-redux";
+import { userLogout } from "../Store/slices/appState";
 
 function Header(props) {
+  const dispatch = useDispatch();
   const { toggleLogin, toggleSignUp } = props;
-  const token = Cookies.get("access_token");
+  const { isLoggedIn } = useSelector((state) => state.appState);
 
-  const handleLogOut = (e) => {
-    e.preventDefault();
+  const handleLogOut = () => {
     logout()
       .then(() => {
+        dispatch(userLogout());
         alert("User Logged Out Successfully");
       })
       .catch(() => {
@@ -41,7 +43,7 @@ function Header(props) {
         <li className="myli hover-underline-animation">
           <Link to="/AboutUs">About Us</Link>
         </li>
-        {token ? (
+        {isLoggedIn ? (
           <div className="btncontainer">
             <button className="logout" onClick={handleLogOut}>
               Log Out

@@ -5,7 +5,11 @@ import Cookie from "js-cookie";
 import axios from "axios";
 import "./styles.css";
 
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../Store/slices/appState';
+
 function LoginPage(props) {
+  const dispatch = useDispatch();
   const { onClose } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +27,7 @@ function LoginPage(props) {
         onClose();
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         Cookie.set("access_token", `${token}`, { expires: 14 });
+        dispatch(userLogin());
         // setIsLoggedIn(true);
         // axios.get("/api/user").then((res) => {
         //   setUserName(res.data.username);
