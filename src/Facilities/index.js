@@ -3,6 +3,7 @@
 import SearchForm from "../SearchForm";
 import "./styles.css";
 import Footer from "../Footer";
+import MapComp from "../map";
 
 function ServicePage() {
   // const [users, setUsers] = useState([]);
@@ -29,7 +30,16 @@ function ServicePage() {
           );
         })}
       </div> */}
-      <SearchForm />
+      <div className="container">
+        <div className="row">
+          <div className="column">
+            <SearchForm />
+          </div>
+          <div className="column">
+            <MapComp />
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );

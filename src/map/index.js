@@ -12,8 +12,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 33.6221,
+  lng: 72.9595,
 };
 
 // const MapMarker = React.memo(({ color, text, location }) => {
@@ -54,7 +54,7 @@ function MyComponent() {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={5}
+      zoom={6}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
