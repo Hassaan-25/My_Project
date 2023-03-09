@@ -3,7 +3,8 @@
   /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: auto 105px;
+  left: 0px;
   /* width: 500px;
   height: 500px; */
   padding: 1rem;
