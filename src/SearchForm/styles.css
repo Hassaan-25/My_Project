@@ -1,16 +1,20 @@
 .search-form {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
-  margin: 20px;
-  width: 500px;
-  height: 500px;
+  margin: auto 105px;
+  left: 0px;
+  /* width: 500px;
+  height: 500px; */
   padding: 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   background-color: white;
+
+  position: absolute;
+  z-index: 1;
 }
 
 .form-group {
@@ -23,7 +27,7 @@
 label {
   display: block;
   width: 100%;
-  max-width: 80px;
+  /* max-width: 80px; */
   font-size: 14px;
   font-weight: 500;
   color: #333;

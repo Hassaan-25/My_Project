@@ -6,11 +6,6 @@ import {
   // OverlayView,
 } from "@react-google-maps/api";
 
-const containerStyle = {
-  width: "500px",
-  height: "500px",
-};
-
 const center = {
   lat: 33.6221,
   lng: 72.9595,
@@ -52,7 +47,7 @@ function MyComponent() {
 
   return isLoaded ? (
     <GoogleMap
-      mapContainerStyle={containerStyle}
+      mapContainerStyle={{ height: "80vh" }}
       center={center}
       zoom={6}
       onLoad={onLoad}

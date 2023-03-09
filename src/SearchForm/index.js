@@ -13,7 +13,15 @@ function SearchForm() {
     console.log(
       `Form submitted: ${antigen}, ${cityName}, ${reqDate}, ${areaUnder}, ${numBottles}`
     );
-    // Send booking data to server or process it here
+
+    // fetch(
+    //   `/api/users?antigen=${antigen}&city=${cityName}&date=${reqDate}&area=${areaUnder}&bottles=${numBottles}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data); // Do something with the fetched user data
+    //   })
+    //   .catch((error) => console.error(error));
   };
 
   return (
@@ -27,13 +35,14 @@ function SearchForm() {
           required
         >
           <option value="">Select Antigen</option>
-          <option value="A">A+</option>
-          <option value="A">A-</option>
-          <option value="B">B+</option>
-          <option value="B">B-</option>
-          <option value="AB">AB+</option>
-          <option value="AB">AB-</option>
-          <option value="O">O</option>
+          <option value="A+">A positive</option>
+          <option value="A-">A negative</option>
+          <option value="B+">B positive</option>
+          <option value="B-">B negative</option>
+          <option value="AB+">AB positive</option>
+          <option value="AB-">AB negative</option>
+          <option value="O+">O positive</option>
+          <option value="O-">O negative</option>
         </select>
       </div>
       <div className="form-group">
@@ -68,7 +77,7 @@ function SearchForm() {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="num-bottles">Passengers:</label>
+        <label htmlFor="num-bottles">Number of Bottles:</label>
         <input
           type="number"
           id="bottles"
