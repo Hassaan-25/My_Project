@@ -5,8 +5,8 @@ import Cookie from "js-cookie";
 import axios from "axios";
 import "./styles.css";
 
-import { useDispatch } from 'react-redux';
-import { userLogin } from '../Store/slices/appState';
+import { useDispatch } from "react-redux";
+import { userLogin } from "../Store/slices/appState";
 
 function LoginPage(props) {
   const dispatch = useDispatch();
