@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HomePage from "./HomePage";
 import ServicesPage from "./ServicesPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -9,13 +9,25 @@ import Header from "./Header";
 import Facilities from "./Facilities";
 import OrderPage from "./OrderPage";
 import AboutUs from "./AboutUs";
+import PrivateRoute from "./PrivateRoute";
 import { Modal } from "react-bootstrap";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { userLogin } from "./Store/slices/appState";
 
 function App() {
+  const dispatch = useDispatch();
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const toggleLogin = () => setShowLogin((prevState) => !prevState);
   const toggleSignUp = () => setShowSignup((prevState) => !prevState);
+
+  useEffect(() => {
+    const token = Cookies.get("access_token");
+    if (token) {
+      dispatch(userLogin());
+    }
+  }, [dispatch]);
 
   return (
     <div className="wrapper">
@@ -25,7 +37,10 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/HomePage" element={<HomePage />}></Route>
           <Route path="/ServicePage" element={<ServicesPage />}></Route>
-          <Route path="/Facilities" element={<Facilities />}></Route>
+          <Route
+            path="/Facilities"
+            element={<PrivateRoute component={Facilities} />}
+          ></Route>
           <Route path="/AboutUs" element={<AboutUs />}></Route>
           <Route path="/OrderPage" element={<OrderPage />}></Route>
           {/* <Route path="/LoginPage" element={<LoginPage />}></Route>

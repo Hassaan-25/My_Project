@@ -37,7 +37,7 @@ function ServicePage() {
           </div> */}
           <div className="column">
             <div className="filterContainer">
-            <SearchForm />
+              <SearchForm />
             </div>
             <MapComp />
           </div>

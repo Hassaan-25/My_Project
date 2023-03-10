@@ -1,8 +1,12 @@
-.mapcontainer {
-  /* height: 50vh;
-  width: 50%; */
+.Modal-btn{
+  background: #1E2D50;
+  border-radius: 5px;
 }
 
+.modal h2 {
+  margin-top: 0;
+}
 
-
-
+.modal p {
+  margin-bottom: 0;
+}

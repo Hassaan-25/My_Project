@@ -1,70 +1,129 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   GoogleMap,
-  useJsApiLoader,
+  // useJsApiLoader,
   Marker,
-  // OverlayView,
+  useLoadScript,
 } from "@react-google-maps/api";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserLocation } from "../Store/slices/mapState";
+import { Modal, Button } from "react-bootstrap";
+import { users } from "./static";
 
-const center = {
-  lat: 33.6221,
-  lng: 72.9595,
+const libraries = ["places"];
+const mapContainerStyle = {
+  height: "80vh",
 };
 
-// const MapMarker = React.memo(({ color, text, location }) => {
-//   return (
-//     <OverlayView
-//       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-//       position={location}
-//       // getPixelPositionOffset={getPixelPositionOffset}
-//     >
-//       <span className="marker-container">
-//         <span className="stack-item marker-icon-text ">{text}</span>
-//       </span>
-//     </OverlayView>
-//   );
-// });
+const options = {
+  disableDefaultUI: true,
+  zoomControl: true,
+};
+
+const center = {
+  lat: 33.6326,
+  lng: 72.978,
+};
+
+const apiKey = "AIzaSyCFfOLtD3ADMvsUO4NxgFBymhMX_oOdMXc";
 
 function MyComponent() {
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDai50O1JJN5mgRPVI4qb7kr7SUxDZvpnA",
+  const { currentUserLoc } = useSelector((state) => state.mapState);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: apiKey,
+    libraries,
   });
 
-  const [map, setMap] = React.useState(null);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        dispatch(setUserLocation(position.coords));
+      },
+      () => null,
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
+    );
+  }, [dispatch]);
 
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+  const closeModal = () => setShowModal(false);
 
-    setMap(map);
-  }, []);
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
+  console.log(currentUserLoc);
 
   return isLoaded ? (
     <GoogleMap
-      mapContainerStyle={{ height: "80vh" }}
+      id={currentUserLoc}
+      mapContainerStyle={mapContainerStyle}
+      zoom={12}
       center={center}
-      zoom={6}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
+      options={options}
     >
-      {/* Child components, such as markers, info windows, etc. */}
-      <Marker
-        icon={
-          "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-        }
-        position={center}
-      />
-      <></>
+      {currentUserLoc?.latitude && currentUserLoc?.longitude && (
+        <Marker
+          position={{
+            lat: currentUserLoc.latitude,
+            lng: currentUserLoc.longitude,
+          }}
+          icon={{
+            url: "https://www.linkpicture.com/q/favicon_41.png",
+            scaledSize: new window.google.maps.Size(30, 30),
+          }}
+        />
+      )}
+      {users.map((user) => (
+        <Marker
+          key={user.id}
+          position={{
+            lat: user.location.latitude,
+            lng: user.location.longitude,
+          }}
+          icon={{
+            url: "https://www.linkpicture.com/q/favicon_41.png",
+            scaledSize: new window.google.maps.Size(30, 30),
+          }}
+          onClick={() => {
+            setSelectedUser(user);
+            setShowModal(true);
+          }}
+        />
+      ))}
+      {/* {selectedUser && (
+        <InfoWindow
+          position={{
+            lat: selectedUser.location.latitude,
+            lng: selectedUser.location.longitude,
+          }}
+          onCloseClick={() => setSelectedUser(null)}
+        >
+          <div>
+            <p>{selectedUser.name}</p>
+            <p>{selectedUser.email}</p>
+            <p>{selectedUser.bloodGroup}</p>
+          </div>
+        </InfoWindow>
+      )} */}
+      {selectedUser && (
+        <Modal show={showModal} onHide={closeModal}>
+          <Modal.Body>
+            <h2>{selectedUser.name}</h2>
+            <p>{selectedUser.email}</p>
+            <p>{selectedUser.bloodGroup}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button className="Modal-btn" onClick={() => setShowModal(false)}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      )}
     </GoogleMap>
   ) : (
-    <></>
+    <div>Loading...</div>
   );
 }
-
 export default React.memo(MyComponent);
