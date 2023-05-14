@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 
 function SearchForm() {
@@ -7,6 +8,14 @@ function SearchForm() {
   const [reqDate, setReqDate] = useState("");
   const [areaUnder, setareaUnder] = useState("");
   const [numBottles, setNumBottles] = useState("");
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    setTimeout(() => {
+      navigate("/OrderPage");
+    }, 1500);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,15 +55,18 @@ function SearchForm() {
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor="destination">City</label>
-        <input
-          type="text"
-          id="city"
+        <label htmlFor="cityName">Required Blood Group:</label>
+        <select
+          id="cityName"
           value={cityName}
           onChange={(e) => setCityName(e.target.value)}
-          placeholder="Enter City"
           required
-        />
+        >
+          <option value="">Select City</option>
+          <option value="Islamabad">Islamabad</option>
+          <option value="Lahore">Lahore</option>
+          <option value="Multan">Multan</option>
+        </select>
       </div>
       <div className="form-group">
         <label htmlFor="required-date">Date:</label>
@@ -88,7 +100,7 @@ function SearchForm() {
           required
         />
       </div>
-      <button className="search-form-btn" type="submit">
+      <button className="search-form-btn" type="submit" onClick={handleClick}>
         Search
       </button>
     </form>

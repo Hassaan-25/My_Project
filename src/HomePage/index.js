@@ -1,6 +1,7 @@
 import "./styles.css";
-
 function HomePage() {
+  console.log("HomePage", window.google);
+
   return (
     <>
       <div className="LandPage_image"></div>

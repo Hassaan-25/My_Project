@@ -1,14 +1,15 @@
 export const users = [
   {
     id: 0,
-    name: "Abdullah",
-    email: "abdullah@example.com",
-    password: "password0",
+    name: "Wardah Mumtaz",
+    email: "wurdu@gmail.com",
+    password: "password4",
     bloodGroup: "A+",
-    contactNum: "03107702635",
+    city: "Islamabad",
+    contactNum: "03106860035",
     location: {
-      latitude: 33.6588,
-      longitude: 72.88,
+      latitude: 33.68,
+      longitude: 73.012,
     },
   },
   {
@@ -17,18 +18,34 @@ export const users = [
     email: "Asadullah@example.com",
     password: "password1",
     bloodGroup: "AB-",
+    city: "Islamabad",
     contactNum: "03106660935",
     location: {
       latitude: 33.69988,
       longitude: 72.9998,
     },
   },
+
   {
     id: 2,
+    name: "Ammar Farooq",
+    email: "ammar@gmail.com",
+    password: "password6",
+    bloodGroup: "AB+",
+    city: "Islamabad",
+    contactNum: "0310575890",
+    location: {
+      latitude: 33.573062,
+      longitude: 73.063312,
+    },
+  },
+  {
+    id: 3,
     name: "Bilal Khan",
     email: "BilalKhan@example.com",
     password: "password2",
     bloodGroup: "B+",
+    city: "Islamabad",
     contactNum: "03346660936",
     location: {
       latitude: 33.68,
@@ -36,27 +53,16 @@ export const users = [
     },
   },
   {
-    id: 3,
-    name: "Mutti ur Rehman",
-    email: "mutt@gmail.com",
-    password: "password3",
-    bloodGroup: "AB-",
-    contactNum: "03346860969",
-    location: {
-      latitude: 33.76712,
-      longitude: 72.724802,
-    },
-  },
-  {
     id: 4,
-    name: "Wardah Mumtaz",
-    email: "wurdu@gmail.com",
-    password: "password4",
+    name: "Abdullah",
+    email: "abdullah@example.com",
+    password: "password0",
     bloodGroup: "A+",
-    contactNum: "03106860035",
+    contactNum: "03107702635",
+    city: "Islamabad,",
     location: {
-      latitude: 33.68,
-      longitude: 73.012,
+      latitude: 33.6588,
+      longitude: 72.88,
     },
   },
   {
@@ -65,6 +71,7 @@ export const users = [
     email: "anees@gmail.com",
     password: "password5",
     bloodGroup: "o-",
+    city: "Islamabad",
     contactNum: "03106767888",
     location: {
       latitude: 33.618397,
@@ -73,14 +80,15 @@ export const users = [
   },
   {
     id: 6,
-    name: "Ammar Farooq",
-    email: "ammar@gmail.com",
-    password: "password6",
-    bloodGroup: "AB+",
-    contactNum: "0310575890",
+    name: "Mutti ur Rehman",
+    email: "mutt@gmail.com",
+    password: "password3",
+    bloodGroup: "AB-",
+    city: "Islamabad",
+    contactNum: "03346860969",
     location: {
-      latitude: 33.573062,
-      longitude: 73.063312,
+      latitude: 33.76712,
+      longitude: 72.724802,
     },
   },
   {
@@ -89,6 +97,7 @@ export const users = [
     email: "aliaftab@gmail.com",
     password: "password7",
     bloodGroup: "B+",
+    city: "Islamabad",
     contactNum: "03346089977",
     location: {
       latitude: 33.767606,
@@ -101,6 +110,7 @@ export const users = [
     email: "itti@gmail.com",
     password: "password8",
     bloodGroup: "B-",
+    city: "Islamabad",
     contactNum: "03114442984",
     location: {
       latitude: 33.58393,
@@ -113,6 +123,7 @@ export const users = [
     email: "musa@gmail.com",
     password: "password9",
     bloodGroup: "O+",
+    city: "Islamabad",
     contactNum: "03114442984",
     location: {
       latitude: 33.5627318,
@@ -125,6 +136,7 @@ export const users = [
     email: "Iman@gmail.com",
     password: "password10",
     bloodGroup: "AB+",
+    city: "Islamabad",
     contactNum: "090078601",
     location: {
       latitude: 33.583861,

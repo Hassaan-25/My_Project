@@ -36,6 +36,40 @@ export const fetchUsers = async () => {
   }
 };
 
+export const fetchUsersByCity = async (cityName) => {
+  try {
+    const result = await axiosInstance.get(`/user/fetch/?city=${cityName}`);
+    return result.data;
+  } catch (error) {
+    throw error.response;
+  }
+};
+
+export const fetchUsersByAntigen = async (antigen) => {
+  try {
+    const encodedAntigen = encodeURIComponent(antigen);
+    console.log(antigen);
+    const result = await axiosInstance.get(
+      `/user/fetch/?antigen=${encodedAntigen}`
+    );
+    return result.data;
+  } catch (error) {
+    throw error.response;
+  }
+};
+
+export const fetchUsersByCityAndAntigen = async (cityName, antigen) => {
+  try {
+    const encodedAntigen = encodeURIComponent(antigen);
+    const result = await axiosInstance.get(
+      `/user/fetch/?city=${cityName}&antigen=${encodedAntigen}`
+    );
+    return result.data;
+  } catch (error) {
+    throw error.response;
+  }
+};
+
 export const addOrder = async (payload) => {
   try {
     const result = await axiosInstance.post(`/orders`, payload);
