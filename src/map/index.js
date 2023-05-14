@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {
   GoogleMap,
-  // useJsApiLoader,
+  InfoWindow,
+  DirectionsRenderer,
   Marker,
   useLoadScript,
 } from "@react-google-maps/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../Store/slices/mapState";
-import { Modal, Button } from "react-bootstrap";
 import { users } from "./static";
+import "./styles.css";
+import { useMapContext } from "../MapContext";
+import UserDetailModal from "../components/UserDetailModal";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -25,105 +28,138 @@ const center = {
   lng: 72.978,
 };
 
-const apiKey = "AIzaSyCFfOLtD3ADMvsUO4NxgFBymhMX_oOdMXc";
+const apiKey = "AIzaSyDrTIQheaZysE2lJqKT1LT7EhUQlAazvJ4";
 
-function MyComponent() {
+function MapPage(props) {
+  const { actions, selectedUser, directions } = useMapContext();
+  const { updateSelectedUser } = actions;
+
   const { currentUserLoc } = useSelector((state) => state.mapState);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [userDistances, setUserDistances] = useState("");
+  const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-  const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded } = useLoadScript({
     googleMapsApiKey: apiKey,
     libraries,
   });
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
+    if (isLoaded) {
+      const fetchDistances = async () => {
+        // Get the user location
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+          });
+        });
+
+        // Set the user location in redux
         dispatch(setUserLocation(position.coords));
-      },
-      () => null,
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0,
-      }
-    );
-  }, [dispatch]);
 
-  const closeModal = () => setShowModal(false);
+        // Check if Google Maps API is loaded
+        if (window.google && window.google.maps) {
+          const currentUserLoc = position.coords;
+          const service = new window.google.maps.DistanceMatrixService();
+          service.getDistanceMatrix(
+            {
+              destinations: users.map((user) => ({
+                lat: user.location.latitude,
+                lng: user.location.longitude,
+              })),
+              origins: [
+                { lat: currentUserLoc.latitude, lng: currentUserLoc.longitude },
+              ],
+              travelMode: "DRIVING",
+            },
+            (response, status) => {
+              if (status === "OK") {
+                const distances = response.rows[0].elements.map((element) => ({
+                  distance: element.distance.text,
+                  duration: element.duration.text,
+                }));
+                setUserDistances(distances);
+              } else {
+                console.log("Error:", status);
+              }
+            }
+          );
+        } else {
+          console.log("Google Maps API not loaded");
+        }
+      };
 
-  console.log(currentUserLoc);
+      fetchDistances();
+    }
+  }, [dispatch, isLoaded]);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return isLoaded ? (
-    <GoogleMap
-      id={currentUserLoc}
-      mapContainerStyle={mapContainerStyle}
-      zoom={12}
-      center={center}
-      options={options}
-    >
-      {currentUserLoc?.latitude && currentUserLoc?.longitude && (
-        <Marker
-          position={{
-            lat: currentUserLoc.latitude,
-            lng: currentUserLoc.longitude,
-          }}
-          icon={{
-            url: "https://www.linkpicture.com/q/favicon_41.png",
-            scaledSize: new window.google.maps.Size(30, 30),
-          }}
-        />
-      )}
-      {users.map((user) => (
-        <Marker
-          key={user.id}
-          position={{
-            lat: user.location.latitude,
-            lng: user.location.longitude,
-          }}
-          icon={{
-            url: "https://www.linkpicture.com/q/favicon_41.png",
-            scaledSize: new window.google.maps.Size(30, 30),
-          }}
-          onClick={() => {
-            setSelectedUser(user);
-            setShowModal(true);
-          }}
-        />
-      ))}
-      {/* {selectedUser && (
-        <InfoWindow
-          position={{
-            lat: selectedUser.location.latitude,
-            lng: selectedUser.location.longitude,
-          }}
-          onCloseClick={() => setSelectedUser(null)}
-        >
-          <div>
-            <p>{selectedUser.name}</p>
-            <p>{selectedUser.email}</p>
-            <p>{selectedUser.bloodGroup}</p>
-          </div>
-        </InfoWindow>
-      )} */}
-      {selectedUser && (
-        <Modal show={showModal} onHide={closeModal}>
-          <Modal.Body>
-            <h2>{selectedUser.name}</h2>
-            <p>{selectedUser.email}</p>
-            <p>{selectedUser.bloodGroup}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button className="Modal-btn" onClick={() => setShowModal(false)}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
-    </GoogleMap>
+    <>
+      <GoogleMap
+        id={currentUserLoc}
+        mapContainerStyle={mapContainerStyle}
+        zoom={12}
+        center={center}
+        options={options}
+      >
+        {currentUserLoc?.latitude && currentUserLoc?.longitude && (
+          <Marker
+            position={{
+              lat: currentUserLoc.latitude,
+              lng: currentUserLoc.longitude,
+            }}
+            icon={{
+              url: "https://www.linkpicture.com/q/icons8-map-marker-32.png",
+              scaledSize: new window.google.maps.Size(30, 30),
+            }}
+          />
+        )}
+        {users.map((user, index) => (
+          <Marker
+            key={user.id}
+            position={{
+              lat: user.location.latitude,
+              lng: user.location.longitude,
+            }}
+            icon={{
+              url: "https://www.linkpicture.com/q/favicon_41.png",
+              scaledSize: new window.google.maps.Size(30, 30),
+            }}
+            onClick={() => {
+              // setSelectedUser(user);
+              setShowModal(true);
+              updateSelectedUser(user);
+            }}
+            onMouseOver={() => setHoveredMarkerIndex(index)}
+            onMouseOut={() => setHoveredMarkerIndex(null)}
+          >
+            {hoveredMarkerIndex === index && userDistances.length > 0 && (
+              <InfoWindow>
+                <div>
+                  <p>{user.name}</p>
+                  <p>Distance: {userDistances[index].distance}</p>
+                  <p>Duration: {userDistances[index].duration}</p>
+                </div>
+              </InfoWindow>
+            )}
+          </Marker>
+        ))}
+        {directions && <DirectionsRenderer directions={directions} />}
+
+        {selectedUser && (
+          <UserDetailModal isOpen={showModal} onToggle={closeModal} />
+        )}
+      </GoogleMap>
+    </>
   ) : (
     <div>Loading...</div>
   );
 }
-export default React.memo(MyComponent);
+
+export default MapPage;

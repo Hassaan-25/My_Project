@@ -30,5 +30,3 @@ export const mapProps = {
   },
   zoom: 5,
 };
-export const GRAPH_COLORS = ["#6bafc2", "#01678e", "#FF8042", "#61bf93"];
-export const GOOGLE_MAP_API_KEY = "AIzaSyDai50O1JJN5mgRPVI4qb7kr7SUxDZvpnA";

@@ -1,7 +1,8 @@
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   height: 25px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
 }
 
 .signin_button[type="submit"] {
@@ -76,4 +77,8 @@ input[type="password"] {
 
 .form_input{
   width: 60%;
+}
+
+.form_select{
+  width: 45%;
 }

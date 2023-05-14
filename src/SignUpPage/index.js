@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { signup } from "../helpers/api";
 import "./styles.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserLocation } from "../Store/slices/mapState";
 
 function SignUpPage(props) {
+  const { currentUserLoc } = useSelector((state) => state.mapState);
   const { onClose } = props;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [antigen, setAntigen] = useState("");
+  const [cityName, setCityName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        dispatch(setUserLocation(position.coords));
+      },
+      () => null,
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
+    );
+  }, [dispatch]);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -27,27 +47,47 @@ function SignUpPage(props) {
     if (id === "confirmPassword") {
       setConfirmPassword(value);
     }
+    if (id === "cityName") {
+      setCityName(value);
+    }
+    if (id === "antigen") {
+      setAntigen(value);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
     const user = {
       first_name: firstName,
       last_name: lastName,
       email,
       password,
       confirmPassword,
+      location: currentUserLoc,
+      antigen,
+      cityName,
     };
+
     const reqBody = { user: JSON.stringify(user) };
     signup(reqBody)
       .then((res) => {
         onClose?.();
         alert("User Registered Successfully");
+        setTimeout(() => {
+          alert("Please Login to Continue ...");
+        }, 1500);
       })
       .catch(() => {
         alert("Error while Signup ...");
       });
   };
+
+  console.log("########$currentUserLoc", currentUserLoc);
 
   return (
     <div className="form">
@@ -82,6 +122,48 @@ function SignUpPage(props) {
               placeholder="LastName"
               required
             />
+          </div>
+          <div>
+            <label className="form__label" htmlFor="antigen">
+              Antigen:
+            </label>
+            <select
+              id="antigen"
+              className="form_select"
+              value={antigen}
+              onChange={(e) => setAntigen(e.target.value)}
+              required
+            >
+              <option value="">Select Antigen</option>
+              <option value="A+">A positive</option>
+              <option value="A-">A negative</option>
+              <option value="B+">B positive</option>
+              <option value="B-">B negative</option>
+              <option value="AB+">AB positive</option>
+              <option value="AB-">AB negative</option>
+              <option value="O+">O positive</option>
+              <option value="O-">O negative</option>
+            </select>
+          </div>
+          <div>
+            <label className="form__label" htmlFor="cityName">
+              City :
+            </label>
+            <select
+              id="cityName"
+              value={cityName}
+              onChange={(e) => setCityName(e.target.value)}
+              required
+              className="form_select"
+            >
+              <option value="">Select City</option>
+              <option value="islamabad">Islamabad</option>
+              <option value="lahore">Lahore</option>
+              <option value="multan">Multan</option>
+              <option value="karachi">Karachi</option>
+              <option value="sialkot">Sialkot</option>
+              <option value="peshawar">Peshawar</option>
+            </select>
           </div>
           <div className="email">
             <label className="form__label" htmlFor="email">

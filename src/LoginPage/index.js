@@ -4,7 +4,6 @@ import { login } from "../helpers/api";
 import Cookie from "js-cookie";
 import axios from "axios";
 import "./styles.css";
-
 import { useDispatch } from "react-redux";
 import { userLogin } from "../Store/slices/appState";
 
@@ -32,9 +31,9 @@ function LoginPage(props) {
         // axios.get("/api/user").then((res) => {
         //   setUserName(res.data.username);
         // });
-        // navigate("/");
 
         alert("User logged in Successfully");
+        // navigate("/Facilities");
       })
       .catch(() => {
         alert("Error while login ...");

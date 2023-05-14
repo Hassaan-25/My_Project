@@ -4,7 +4,60 @@
   height: 400px;
 }
 
-.map_container{
-  height: 100px;
-  width: 100px;
+.mapcontainer{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.name {
+  width: 25%;
+}
+
+.bloodGroup {
+  width: 25%;
+}
+
+.city {
+  width: 25%;
+}
+
+.contactNum {
+  width: 25%;
+}
+
+.orderbtn{
+  background: #B6555A;
+    height: 30px;
+    width: 60px;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    color: white;
+    border: 0px;
+}
+
+.order_partition_wrapper {
+  background-color: rgba(240, 248, 255, 0.274);
+  font-family: Montserrat,sans-ser;
+  margin: 0px 15px 0px 15px;
+  float: left;
+  height: 475px;
+  width: 45%;
+  padding: 5px;
+  top: 200px;
+  border-radius: 20px;
+  opacity: 1px;
+}
+
+
+.list-item span {
+  margin-right: 10px;
 }

@@ -14,6 +14,7 @@ import { Modal } from "react-bootstrap";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./Store/slices/appState";
+import MapContext from "./MapContext";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,33 +32,50 @@ function App() {
 
   return (
     <div className="wrapper">
-      <BrowserRouter>
-        <Header toggleLogin={toggleLogin} toggleSignUp={toggleSignUp} />
-        <Routes>
-          <Route path="/" element={<HomePage />}></Route>
-          <Route path="/HomePage" element={<HomePage />}></Route>
-          <Route path="/ServicePage" element={<ServicesPage />}></Route>
-          <Route
-            path="/Facilities"
-            element={<PrivateRoute component={Facilities} />}
-          ></Route>
-          <Route path="/AboutUs" element={<AboutUs />}></Route>
-          <Route path="/OrderPage" element={<OrderPage />}></Route>
-          {/* <Route path="/LoginPage" element={<LoginPage />}></Route>
-          <Route path="/SignUpPage" element={<LoginPage />}></Route> */}
-        </Routes>
-      </BrowserRouter>
+      <MapContext>
+        <BrowserRouter>
+          <Header toggleLogin={toggleLogin} toggleSignUp={toggleSignUp} />
+          <Routes>
+            <Route path="/" element={<HomePage />}></Route>
+            <Route path="/HomePage" element={<HomePage />}></Route>
 
-      <Modal show={showLogin} onHide={() => setShowLogin(false)}>
-        <Modal.Body>
-          <LoginPage onClose={toggleLogin} />
-        </Modal.Body>
-      </Modal>
-      <Modal show={showSignup} onHide={() => setShowSignup(false)}>
-        <Modal.Body>
-          <SignUpPage onClose={toggleSignUp} />
-        </Modal.Body>
-      </Modal>
+            {/* <Route path="/OrderPage" element={<OrderPage />}></Route>
+            <Route path="/Facilities" element={<Facilities />}></Route>
+            <Route path="/ServicePage" element={<ServicesPage />}></Route> */}
+
+            <Route
+              path="/ServicePage"
+              element={<PrivateRoute component={ServicesPage} />}
+            ></Route>
+
+            <Route
+              path="/Facilities"
+              element={<PrivateRoute component={Facilities} />}
+            ></Route>
+            <Route
+              path="/AboutUs"
+              element={<PrivateRoute component={AboutUs} />}
+            ></Route>
+            <Route
+              path="/OrderPage"
+              element={<PrivateRoute component={OrderPage} />}
+            ></Route>
+            {/* <Route path="/LoginPage" element={<LoginPage />}></Route>
+          <Route path="/SignUpPage" element={<LoginPage />}></Route> */}
+          </Routes>
+        </BrowserRouter>
+
+        <Modal show={showLogin} onHide={() => setShowLogin(false)}>
+          <Modal.Body>
+            <LoginPage onClose={toggleLogin} />
+          </Modal.Body>
+        </Modal>
+        <Modal show={showSignup} onHide={() => setShowSignup(false)}>
+          <Modal.Body>
+            <SignUpPage onClose={toggleSignUp} />
+          </Modal.Body>
+        </Modal>
+      </MapContext>
     </div>
   );
 }

@@ -10,3 +10,8 @@
 .modal p {
   margin-bottom: 0;
 }
+
+.clear-btn{
+  background-color: #1E2D50;
+  border-radius: 5px;
+}
