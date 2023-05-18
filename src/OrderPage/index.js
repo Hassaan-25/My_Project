@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import "./styles.css";
 import MapComp from "../map";
-import { users } from "./static";
+// import { users } from "./static";
 import { useMapContext } from "../MapContext";
 import UserDetailModal from "../components/UserDetailModal";
+import { useSelector } from "react-redux";
 
 export function OrderPage() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { actions } = useMapContext();
-  const { updateSelectedUser } = actions;
+  const { users } = useSelector((state) => state.usersState);
+  const { updateSelectedUser, removeDirections } = actions;
+
+  const handleRemoveDirections = () => {
+    removeDirections();
+  };
 
   const handleUserSelect = (user) => {
     updateSelectedUser(user);
@@ -21,6 +27,8 @@ export function OrderPage() {
     setShowModal(false);
   };
 
+  console.log(users);
+
   return (
     <>
       <div className="Service_wrapper">
@@ -30,10 +38,12 @@ export function OrderPage() {
             return (
               <ul key={index}>
                 <li className="list-item">
-                  <span className="name">{user.name}</span>
-                  <span className="bloodGroup">{user.bloodGroup}</span>
-                  <span className="city">{user.city}</span>
-                  <span className="contactNum">{user.contactNum}</span>
+                  <span className="name">
+                    {user.first_name} {user.last_name}
+                  </span>
+                  <span className="bloodGroup">{user.antigen}</span>
+                  <span className="city">{user.cityName}</span>
+                  <span className="contactNum">{user.contact}</span>
 
                   <span>
                     <button
@@ -54,6 +64,9 @@ export function OrderPage() {
         <div className="order_partition_wrapper">
           <div className="mapcontainer">
             <MapComp />
+            <button className="clear-btn" onClick={handleRemoveDirections}>
+              Clear Directions
+            </button>
           </div>
         </div>
       </div>

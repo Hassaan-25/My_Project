@@ -1,6 +1,24 @@
 import "./styles.css";
+import React, { useEffect } from "react";
+import { setUsers } from "../Store/slices/usersState";
+import { fetchUsers } from "../helpers/api";
+import { useDispatch, useSelector } from "react-redux";
+
 function HomePage() {
-  console.log("HomePage", window.google);
+  const { isLoggedIn } = useSelector((state) => state.appState);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchUsers()
+        .then((res) => {
+          dispatch(setUsers(res));
+        })
+        .catch(() => {
+          alert("Error while fetching all users ...");
+        });
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <>

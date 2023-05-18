@@ -61,6 +61,10 @@ const MapContainer = React.memo((props) => {
     [currentUserLoc]
   );
 
+  const removeDirections = useCallback(() => {
+    setDirections(null);
+  }, []);
+
   const value = useMemo(
     () => ({
       selectedUser,
@@ -70,9 +74,10 @@ const MapContainer = React.memo((props) => {
       actions: {
         updateSelectedUser: setSelectedUser,
         // setUserDistances,
+        removeDirections,
       },
     }),
-    [selectedUser, directions, fetchDirections]
+    [selectedUser, directions, fetchDirections, removeDirections]
   );
   return <MapContext.Provider value={value}>{children}</MapContext.Provider>;
 });

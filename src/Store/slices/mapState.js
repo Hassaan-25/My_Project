@@ -9,9 +9,6 @@ export const mapStateSlice = createSlice({
   initialState,
   reducers: {
     setUserLocation: (state, action) => {
-      // state.latitude = action.payload.latitude;
-      // state.longitude = action.payload.longitude;
-
       state.currentUserLoc = {
         latitude: action.payload.latitude,
         longitude: action.payload.longitude,

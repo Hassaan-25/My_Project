@@ -10,10 +10,10 @@ const UserDetailModal = (props) => {
   return (
     <Modal show={isOpen} onHide={onToggle}>
       <Modal.Body>
-        <h2>{selectedUser.name}</h2>
-        <p>Blood Group : {selectedUser.bloodGroup}</p>
+        <h2>{selectedUser.first_name}</h2>
+        <p>Blood Group : {selectedUser.antigen}</p>
         <p>Email : {selectedUser.email}</p>
-        <p>Contact Number : {selectedUser.contactNum}</p>
+        <p>Contact Number : {selectedUser.contact}</p>
       </Modal.Body>
       <Modal.Footer>
         <Button className="Modal-btn" onClick={onToggle}>

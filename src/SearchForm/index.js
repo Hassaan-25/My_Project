@@ -63,9 +63,12 @@ function SearchForm() {
           required
         >
           <option value="">Select City</option>
-          <option value="Islamabad">Islamabad</option>
-          <option value="Lahore">Lahore</option>
-          <option value="Multan">Multan</option>
+          <option value="islamabad">Islamabad</option>
+          <option value="lahore">Lahore</option>
+          <option value="multan">Multan</option>
+          <option value="karachi">Karachi</option>
+          <option value="sialkot">Sialkot</option>
+          <option value="peshawar">Peshawar</option>
         </select>
       </div>
       <div className="form-group">
