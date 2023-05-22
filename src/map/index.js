@@ -8,10 +8,9 @@ import {
 } from "@react-google-maps/api";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLocation } from "../Store/slices/mapState";
-import { users } from "./static";
+// import { users } from "./static";
 import "./styles.css";
 import { useMapContext } from "../MapContext";
-import UserDetailModal from "../components/UserDetailModal";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -31,13 +30,14 @@ const center = {
 const apiKey = "AIzaSyDrTIQheaZysE2lJqKT1LT7EhUQlAazvJ4";
 
 function MapPage(props) {
-  const { actions, selectedUser, directions } = useMapContext();
+  const { actions, directions } = useMapContext();
   const { updateSelectedUser } = actions;
-
   const { currentUserLoc } = useSelector((state) => state.mapState);
   const [userDistances, setUserDistances] = useState("");
   const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const users = useSelector((state) => state.usersState.users);
+  console.log("users", users);
+  // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: apiKey,
@@ -55,10 +55,8 @@ function MapPage(props) {
             maximumAge: 0,
           });
         });
-
         // Set the user location in redux
         dispatch(setUserLocation(position.coords));
-
         // Check if Google Maps API is loaded
         if (window.google && window.google.maps) {
           const currentUserLoc = position.coords;
@@ -93,11 +91,7 @@ function MapPage(props) {
 
       fetchDistances();
     }
-  }, [dispatch, isLoaded]);
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+  }, [dispatch, users, isLoaded]);
 
   return isLoaded ? (
     <>
@@ -133,7 +127,7 @@ function MapPage(props) {
             }}
             onClick={() => {
               // setSelectedUser(user);
-              setShowModal(true);
+              // setShowModal(true);
               updateSelectedUser(user);
             }}
             onMouseOver={() => setHoveredMarkerIndex(index)}
@@ -142,19 +136,16 @@ function MapPage(props) {
             {hoveredMarkerIndex === index && userDistances.length > 0 && (
               <InfoWindow>
                 <div>
-                  <p>{user.name}</p>
+                  <p>{user.first_name}</p>
                   <p>Distance: {userDistances[index].distance}</p>
                   <p>Duration: {userDistances[index].duration}</p>
+                  {console.log(user)}
                 </div>
               </InfoWindow>
             )}
           </Marker>
         ))}
         {directions && <DirectionsRenderer directions={directions} />}
-
-        {selectedUser && (
-          <UserDetailModal isOpen={showModal} onToggle={closeModal} />
-        )}
       </GoogleMap>
     </>
   ) : (

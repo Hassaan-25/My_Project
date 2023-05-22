@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { fetchUsers, fetchUsersByCityAndAntigen } from "../helpers/api";
+import { fetchUsersByCityAndAntigen } from "../helpers/api";
+import { useSelector } from "react-redux";
 import "./styles.css";
 import Footer from "../Footer";
+
 function ServicePage() {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const users = useSelector((state) => state.usersState.users);
 
   useEffect(() => {
-    fetchUsers()
-      .then((res) => {
-        setUsers(res);
-      })
-      .catch(() => {
-        alert("Error while fetching all users ...");
-      });
-  }, []);
+    console.log("asasdsadsadsaasdsad", users);
+  }, [users]);
 
   useEffect(() => {
     fetchUsersByCityAndAntigen("islamabad", "AB+")
       .then((res) => {
-        console.log(res);
         setFilteredUsers(res);
         console.log(res);
       })
@@ -38,13 +34,22 @@ function ServicePage() {
                 <li>
                   <span>{user.first_name}</span>
                   <span>&nbsp;{user.last_name}</span>
+                  <span>&nbsp;{user.cityName}</span>
                 </li>
               </ul>
             );
           })}
+          {/* <ul>
+            {users.map((user) => (
+              <li key={user._id}>
+                {user.first_name} {user.last_name} - {user.location.latitude},{" "}
+                {user.location.longitude}
+              </li>
+            ))}
+          </ul> */}
         </div>
         <div className="service_partition_wrapper">
-          {filteredUsers.map((user, index) => {
+          {filteredUsers.map((user) => {
             return (
               <ul>
                 <li>

@@ -43,6 +43,18 @@
     color: white;
     border: 0px;
 }
+.clear-btn{
+  background-color: #1E2D50;
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 5px;
+  color: white;
+  /* height: 30px;
+  width: 60px; */
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+  color: white;
+  border: 0px;
+}
 
 .order_partition_wrapper {
   background-color: rgba(240, 248, 255, 0.274);

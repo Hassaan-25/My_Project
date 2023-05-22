@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+import React from "react";
 // import { fetchUsers } from "../helpers/api";
 import SearchForm from "../SearchForm";
 import "./styles.css";

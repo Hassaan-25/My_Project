@@ -11,6 +11,7 @@ function SignUpPage(props) {
   const [lastName, setLastName] = useState("");
   const [antigen, setAntigen] = useState("");
   const [cityName, setCityName] = useState("");
+  const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -53,6 +54,9 @@ function SignUpPage(props) {
     if (id === "antigen") {
       setAntigen(value);
     }
+    if (id === "contact") {
+      setContact(value);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -71,6 +75,7 @@ function SignUpPage(props) {
       location: currentUserLoc,
       antigen,
       cityName,
+      contact,
     };
 
     const reqBody = { user: JSON.stringify(user) };
@@ -86,8 +91,6 @@ function SignUpPage(props) {
         alert("Error while Signup ...");
       });
   };
-
-  console.log("########$currentUserLoc", currentUserLoc);
 
   return (
     <div className="form">
@@ -165,6 +168,21 @@ function SignUpPage(props) {
               <option value="peshawar">Peshawar</option>
             </select>
           </div>
+          <div className="contact">
+            <label className="form__label" htmlFor="contact">
+              Contact Number
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="contact"
+              value={contact}
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Contact Number"
+              required
+            />
+          </div>
+
           <div className="email">
             <label className="form__label" htmlFor="email">
               Email{" "}
