@@ -36,6 +36,7 @@ function MapPage(props) {
   const [userDistances, setUserDistances] = useState("");
   const [hoveredMarkerIndex, setHoveredMarkerIndex] = useState(null);
   const users = useSelector((state) => state.usersState.users);
+  console.log("users", users);
   // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { isLoaded } = useLoadScript({
@@ -92,10 +93,6 @@ function MapPage(props) {
     }
   }, [dispatch, users, isLoaded]);
 
-  // const closeModal = () => {
-  //   setShowModal(false);
-  // };
-
   return isLoaded ? (
     <>
       <GoogleMap
@@ -142,6 +139,7 @@ function MapPage(props) {
                   <p>{user.first_name}</p>
                   <p>Distance: {userDistances[index].distance}</p>
                   <p>Duration: {userDistances[index].duration}</p>
+                  {console.log(user)}
                 </div>
               </InfoWindow>
             )}

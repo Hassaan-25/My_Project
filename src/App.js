@@ -12,9 +12,12 @@ import AboutUs from "./AboutUs";
 import PrivateRoute from "./PrivateRoute";
 import { Modal } from "react-bootstrap";
 import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "./Store/slices/appState";
 import MapContext from "./MapContext";
+import { setUserLocation } from "./Store/slices/mapState";
+import { fetchUsers } from "./helpers/api";
+import { setUsers } from "./Store/slices/usersState";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,7 +25,35 @@ function App() {
   const [showSignup, setShowSignup] = useState(false);
   const toggleLogin = () => setShowLogin((prevState) => !prevState);
   const toggleSignUp = () => setShowSignup((prevState) => !prevState);
+  const isLoggedIn = useSelector((state) => state.appState.isLoggedIn);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          dispatch(setUserLocation(position.coords));
+        },
+        () => null,
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      );
+    }
+  }, [dispatch, isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchUsers()
+        .then((res) => {
+          dispatch(setUsers(res));
+        })
+        .catch(() => {
+          alert("Error while fetching all users ...");
+        });
+    }
+  });
   useEffect(() => {
     const token = Cookies.get("access_token");
     if (token) {
@@ -57,7 +88,7 @@ function App() {
               element={<PrivateRoute component={AboutUs} />}
             ></Route>
             <Route
-              path="/OrderPage"
+              path="/searchForm/OrderPage"
               element={<PrivateRoute component={OrderPage} />}
             ></Route>
             {/* <Route path="/LoginPage" element={<LoginPage />}></Route>

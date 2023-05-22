@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import { useDispatch } from "react-redux";
+import { fetchUsersByCityAndAntigen } from "../helpers/api";
+import { setUsers } from "../Store/slices/usersState";
 
 function SearchForm() {
   const [antigen, setAntigen] = useState("");
@@ -8,29 +11,16 @@ function SearchForm() {
   const [reqDate, setReqDate] = useState("");
   const [areaUnder, setareaUnder] = useState("");
   const [numBottles, setNumBottles] = useState("");
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleClick() {
-    setTimeout(() => {
-      navigate("/OrderPage");
-    }, 1500);
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(
-      `Form submitted: ${antigen}, ${cityName}, ${reqDate}, ${areaUnder}, ${numBottles}`
-    );
-
-    // fetch(
-    //   `/api/users?antigen=${antigen}&city=${cityName}&date=${reqDate}&area=${areaUnder}&bottles=${numBottles}`
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data); // Do something with the fetched user data
-    //   })
-    //   .catch((error) => console.error(error));
+    const fetchedUsers = await fetchUsersByCityAndAntigen(cityName, antigen);
+    console.log(fetchedUsers); // Print the fetched users in the console
+    dispatch(setUsers(fetchedUsers));
+    // Dispatch the action to set the Redux state with the fetched users
+    navigate("/searchForm/OrderPage");
   };
 
   return (
@@ -103,7 +93,7 @@ function SearchForm() {
           required
         />
       </div>
-      <button className="search-form-btn" type="submit" onClick={handleClick}>
+      <button className="search-form-btn" type="submit" onClick={handleSubmit}>
         Search
       </button>
     </form>

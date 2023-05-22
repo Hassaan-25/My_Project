@@ -1,13 +1,13 @@
 .text_big{
   position: absolute;
-width: 439px;
+width: 504px;
 height: 210px;
 left: 56px;
 top: 150px;
-font-family: 'Lato';
+font-family: 'Wix Madefor Display', sans-serif;
 font-style: normal;
 font-weight: 700;
-font-size: 96px;
+font-size: 85px;
 line-height: 115px;
 text-align: center;
 
@@ -16,18 +16,38 @@ color: #B6555A;
 
 .text_small{
 position: absolute;
-width: 469px;
-height: 100px;
+width: 50%;
+height: 50%;
 left: 62px;
+margin: 5px;
 top: 380px;
-
-font-family: 'Lato';
+font-family: 'Wix Madefor Display', sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 24px;
 line-height: 29px;
-
 color: #7D7D7D;
+}
+.navbtn {
+  display: block;
+  margin: 20px auto;
+  background: #B6555A;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  color: white;
+  border: 0px;
+  width: 300px; /* Adjust the width as needed */
+}
+
+
+.icons{
+  position: absolute;
+/* width: 100px;
+margin: 5px; */
+left: 137px;
+  color: white;
+  border: 0px;
+  width: 300px; /* Adjust the width as needed */
 }
 
 
