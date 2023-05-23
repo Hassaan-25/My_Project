@@ -23,6 +23,8 @@ function SearchForm() {
     navigate("/searchForm/OrderPage");
   };
 
+  const isSubmitDisabled = !antigen || !cityName;
+
   return (
     <form onSubmit={handleSubmit} className="search-form">
       <div className="form-group">
@@ -93,7 +95,12 @@ function SearchForm() {
           required
         />
       </div>
-      <button className="search-form-btn" type="submit" onClick={handleSubmit}>
+      <button
+        className="search-form-btn"
+        type="submit"
+        onClick={handleSubmit}
+        disabled={isSubmitDisabled}
+      >
         Search
       </button>
     </form>
