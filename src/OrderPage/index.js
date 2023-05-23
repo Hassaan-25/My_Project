@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
 import MapComp from "../map";
-// import { users } from "./static";
 import { useMapContext } from "../MapContext";
 import UserDetailModal from "../components/UserDetailModal";
 import { useSelector } from "react-redux";
@@ -11,6 +10,7 @@ export function OrderPage() {
   const [showModal, setShowModal] = useState(false);
   const { actions } = useMapContext();
   const { users } = useSelector((state) => state.usersState);
+  const { matrixData } = useSelector((state) => state.matrixState);
   const { updateSelectedUser, removeDirections } = actions;
 
   const handleRemoveDirections = () => {
@@ -27,14 +27,17 @@ export function OrderPage() {
     setShowModal(false);
   };
 
+  console.log("matrixData", matrixData);
+
   console.log(users);
+  const matrixDataArray = Object.values(matrixData);
 
   return (
     <>
       <div className="Service_wrapper">
         <div className="order_partition_wrapper">
           <h2>Best Donors Found:</h2>
-          {users.map((user, index) => {
+          {matrixDataArray.map((user, index) => {
             return (
               <ul key={index}>
                 <li className="list-item">
