@@ -80,7 +80,7 @@ export function OrderPage() {
                       className="orderbtn"
                       onClick={() => handleUserSelect(user)}
                     >
-                      Show
+                      Select
                     </button>
                   </span>
                 </li>

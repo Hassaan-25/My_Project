@@ -1,0 +1,29 @@
+  .order-partition-wrapper {
+    margin-bottom: 20px;
+  }
+  
+  h2.selected-donor-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #1E2D50;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  p.selected-donor-info {
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-left : 80px;
+    font-family: 'Inter', sans-serif;
+    line-height: 2;
+    font-weight: bold;
+    color: #B6555A;
+  }
+  .selected_donor_details{
+    height: auto;
+    width: auto;
+  }
+  .map-container {
+    height: 300px;
+  }
+  
