@@ -4,6 +4,7 @@ import MapComp from "../map";
 import { useMapContext } from "../MapContext";
 import UserDetailModal from "../components/UserDetailModal";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export function OrderPage() {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -12,6 +13,10 @@ export function OrderPage() {
   const { users } = useSelector((state) => state.usersState);
   const { matrixData } = useSelector((state) => state.matrixState);
   const { updateSelectedUser, removeDirections } = actions;
+
+  useEffect(() => {
+    handleRemoveDirections();
+  });
 
   const handleRemoveDirections = () => {
     removeDirections();
@@ -73,7 +78,7 @@ export function OrderPage() {
                   </span>
                   <span className="bloodGroup">{user.antigen}</span>
                   <span className="city">{user.cityName}</span>
-                  <span className="contactNum">{user.contact}</span>
+                  {/* <span className="contactNum">{user.contact}</span> */}
 
                   <span>
                     <button

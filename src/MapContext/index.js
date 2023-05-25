@@ -21,11 +21,6 @@ const MapContainer = React.memo((props) => {
   const { currentUserLoc } = useSelector((state) => state.mapState);
   const [selectedUser, setSelectedUser] = useState(null);
   const [directions, setDirections] = useState(null);
-  // const [userDistances, setUserDistances] = useState("");
-
-  // useEffect(() => {
-  //   console.log("userDistances", userDistances);
-  // }, [userDistances]);
 
   const fetchDirections = useCallback(
     async (userLoc) => {
