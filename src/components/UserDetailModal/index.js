@@ -2,15 +2,43 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useMapContext } from "../../MapContext";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserDetailModal = (props) => {
   const { isOpen, onToggle } = props;
-
+  const { currentUserLoc } = useSelector((state) => state.mapState);
   const { fetchDirections, selectedUser } = useMapContext();
   const navigate = useNavigate();
 
-  const handleSelectDonor = () => {
-    navigate("/searchForm/OrderPage/selectedDonor/:id");
+  console.log(currentUserLoc.latitude, currentUserLoc.longitude);
+
+  const handleSelectDonor = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/api/user/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          recipientEmail: selectedUser.email,
+          recipientName: `${selectedUser.first_name} ${selectedUser.last_name}`,
+          lat: currentUserLoc.latitude,
+          lng: currentUserLoc.longitude,
+        }),
+      });
+
+      if (response.ok) {
+        console.log("Email sent successfully");
+      } else {
+        console.error("Failed to send email");
+      }
+
+      fetchDirections(selectedUser.location);
+      onToggle();
+      navigate("/searchForm/OrderPage/selectedDonor/:id");
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
   };
 
   const buttonStyle = {
@@ -44,8 +72,6 @@ const UserDetailModal = (props) => {
           className="Modal-btn"
           style={buttonStyle}
           onClick={() => {
-            fetchDirections(selectedUser.location);
-            onToggle();
             handleSelectDonor();
           }}
         >
