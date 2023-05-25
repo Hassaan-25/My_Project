@@ -18,6 +18,7 @@ import MapContext from "./MapContext";
 import { setUserLocation } from "./Store/slices/mapState";
 import { fetchUsers } from "./helpers/api";
 import { setUsers } from "./Store/slices/usersState";
+import SelectedDonorComponent from "./selectedUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -90,6 +91,14 @@ function App() {
             <Route
               path="/searchForm/OrderPage"
               element={<PrivateRoute component={OrderPage} />}
+            ></Route>
+            <Route
+              path="/searchForm/OrderPage/selectedDonor/:id"
+              element={<PrivateRoute component={SelectedDonorComponent} />}
+            ></Route>
+            <Route
+              path="/searchForm"
+              element={<PrivateRoute component={Facilities} />}
             ></Route>
             {/* <Route path="/LoginPage" element={<LoginPage />}></Route>
           <Route path="/SignUpPage" element={<LoginPage />}></Route> */}

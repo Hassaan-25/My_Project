@@ -118,7 +118,7 @@ function MapPage(props) {
             }}
             icon={{
               url: "https://www.linkpicture.com/q/icons8-map-marker-32.png",
-              scaledSize: new window.google.maps.Size(30, 30),
+              scaledSize: new window.google.maps.Size(35, 35),
             }}
           />
         )}
@@ -131,7 +131,7 @@ function MapPage(props) {
             }}
             icon={{
               url: "https://www.linkpicture.com/q/favicon_41.png",
-              scaledSize: new window.google.maps.Size(30, 30),
+              scaledSize: new window.google.maps.Size(25, 25),
             }}
             onClick={() => {
               // setSelectedUser(user);

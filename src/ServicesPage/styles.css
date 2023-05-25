@@ -9,7 +9,6 @@
   font-family: Montserrat,sans-ser;
   margin: 0px 15px 0px 15px;
   float: left;
-  height: 475px;
   width: 45%;
   padding: 5px;
   top: 200px;
@@ -17,3 +16,60 @@
   border: 2px solid red;
   opacity: 1px;
 }
+
+
+.service-wrapper {
+  padding: 20px;
+  height: 128vh;
+}
+
+.service-partition-wrapper {
+  margin-bottom: 20px;
+  width: 50%;
+  float: left;
+}
+
+.services-img{
+  background: no-repeat;
+  background-size: contain;
+   background-image: url(../assets/Blood\ Transfusion.png);
+  margin: 20px 15px 0px 95px;
+  height: 500px;
+
+  opacity: 1px;
+}
+
+.service-heading {
+  color: #B6555A;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-description {
+  font-size: 16px;
+  margin-bottom: 19px;
+  font-family: 'Inter', sans-serif;
+font-weight: 400;
+
+color: #8B8B8B;
+}
+
+.service-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #1E2D50;
+}
+
+.service-item {
+  margin-bottom: 20px;
+}
+
+.service-item-heading {
+  font-weight: bold;
+  color: #1E2D50;
+}
+
+/* Optional: Add additional styles as per your design preferences */
