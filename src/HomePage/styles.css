@@ -28,26 +28,31 @@ font-size: 24px;
 line-height: 29px;
 color: #7D7D7D;
 }
+
 .navbtn {
-  display: block;
-  margin: 20px auto;
+  /* display: block; */
+  margin: 10px auto;
   background: #B6555A;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   color: white;
   border: 0px;
   width: 300px; /* Adjust the width as needed */
+  display: flex;
+  justify-content: center;
 }
 
 
 .icons{
+  display: flex;
+
+  justify-content: center;
+  margin: 10px 10px;
   position: absolute;
-/* width: 100px;
-margin: 5px; */
-left: 137px;
   color: white;
   border: 0px;
-  width: 300px; /* Adjust the width as needed */
+  width: 100%; /* Adjust the width as needed */
+  
 }
 
 
@@ -62,33 +67,40 @@ left: 137px;
   opacity: 1px;
 }
 
+
+
 .gplay{
   background-image: url(../assets/gplay.png);
   background-color: white;
-  background-size: cover;
+  background-size:contain;
+  margin-left: 10px;
+  /* background: no-repeat; */
   border: 0px;
-  position: absolute;
-  width: 146px;
-  height: 146px;
-  left: 116px;
-  top: 450px;
+  position: relative;
+  width: 130px;
+  height: 55px;
+  left: 60px;
+  padding: 20px;
+  top: -4px;
 }
 
 .aplay{
   position: absolute;
-width: 133px;
-height: 40px;
-left: 260px;
-top: 503px;
+width: 130px;
+height: 38px;
+left: 180px;
+/* top: 483px; */
 background-image: url(../assets/apstore.png);
 border-radius: 5px;
 }
 
-.Landpage_footer{
-  position: absolute;
-width: 1310px;
-height: 250px;
-/* left: -123.09px; */
-top: 600px;
-background-image: url(../assets/footer.png);
-background-size: cover;}
+.Landpage_footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: auto auto;
+  width: 100%;
+  height: 120px; /* Adjust the height as needed */
+  background-image: url(../assets/footer.png);
+  background-size: cover;
+}
