@@ -1,7 +1,7 @@
 import Cookie from "js-cookie";
 import axios from "axios";
 
-const API_URL = "https://putlb.localto.net/api";
+const API_URL = "https://putlb.localto.net";
 
 const headers = {
   "Content-Type": "application/json",

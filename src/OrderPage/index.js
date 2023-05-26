@@ -83,7 +83,6 @@ export function OrderPage() {
                   </span>
                   <span className="bloodGroup">{user.antigen}</span>
                   <span className="city">{user.cityName}</span>
-                  {/* <span className="contactNum">{user.contact}</span> */}
 
                   <span>
                     <button
