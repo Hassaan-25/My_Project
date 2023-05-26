@@ -56,6 +56,7 @@ function MapPage(props) {
           });
         });
         // Set the user location in redux
+
         dispatch(setUserLocation(position.coords));
         // Check if Google Maps API is loaded
         if (window.google && window.google.maps) {
@@ -96,7 +97,6 @@ function MapPage(props) {
           console.log("Google Maps API not loaded");
         }
       };
-
       fetchDistances();
     }
   }, [dispatch, users, isLoaded]);

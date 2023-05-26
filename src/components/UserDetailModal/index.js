@@ -24,6 +24,8 @@ const UserDetailModal = (props) => {
           recipientName: `${selectedUser.first_name} ${selectedUser.last_name}`,
           lat: currentUserLoc.latitude,
           lng: currentUserLoc.longitude,
+          time: selectedUser.duration,
+          distance: selectedUser.distance,
         }),
       });
 

@@ -1,6 +1,6 @@
 .search-form {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap:inherit;
   justify-content: center;
   align-items: center;
   margin: auto;
@@ -8,6 +8,8 @@
   left: 100px;
   /* width: 500px;
   height: 500px; */
+  max-width: 100%;
+  margin: auto auto;
   padding: 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
