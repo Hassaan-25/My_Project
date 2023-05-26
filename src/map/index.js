@@ -122,36 +122,40 @@ function MapPage(props) {
             }}
           />
         )}
-        {users.map((user, index) => (
-          <Marker
-            key={user.id}
-            position={{
-              lat: user.location.latitude,
-              lng: user.location.longitude,
-            }}
-            icon={{
-              url: "https://www.linkpicture.com/q/favicon_41.png",
-              scaledSize: new window.google.maps.Size(25, 25),
-            }}
-            onClick={() => {
-              // setSelectedUser(user);
-              // setShowModal(true);
-              updateSelectedUser(user);
-            }}
-            onMouseOver={() => setHoveredMarkerIndex(index)}
-            onMouseOut={() => setHoveredMarkerIndex(null)}
-          >
-            {hoveredMarkerIndex === index && userDistances.length > 0 && (
-              <InfoWindow>
-                <div>
-                  <p>{user.first_name}</p>
-                  <p>Distance: {userDistances[index].distance}</p>
-                  <p>Duration: {userDistances[index].duration}</p>
-                </div>
-              </InfoWindow>
-            )}
-          </Marker>
-        ))}
+        {users.length > 0 ? (
+          users.map((user, index) => (
+            <Marker
+              key={user.id}
+              position={{
+                lat: user.location.latitude,
+                lng: user.location.longitude,
+              }}
+              icon={{
+                url: "https://www.linkpicture.com/q/favicon_41.png",
+                scaledSize: new window.google.maps.Size(25, 25),
+              }}
+              onClick={() => {
+                // setSelectedUser(user);
+                // setShowModal(true);
+                updateSelectedUser(user);
+              }}
+              onMouseOver={() => setHoveredMarkerIndex(index)}
+              onMouseOut={() => setHoveredMarkerIndex(null)}
+            >
+              {hoveredMarkerIndex === index && userDistances.length > 0 && (
+                <InfoWindow>
+                  <div>
+                    <p>{user.first_name}</p>
+                    <p>Distance: {userDistances[index].distance}</p>
+                    <p>Duration: {userDistances[index].duration}</p>
+                  </div>
+                </InfoWindow>
+              )}
+            </Marker>
+          ))
+        ) : (
+          <div>Loading</div>
+        )}
         {directions && <DirectionsRenderer directions={directions} />}
       </GoogleMap>
     </>

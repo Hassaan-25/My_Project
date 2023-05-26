@@ -32,9 +32,6 @@ function ServicePage() {
       </div> */}
       <div className="container">
         <div className="row">
-          {/* <div className="column">
-            
-          </div> */}
           <div className="column">
             <div className="filterContainer">
               <SearchForm />
