@@ -14,7 +14,7 @@ const UserDetailModal = (props) => {
 
   const handleSelectDonor = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/user/sendEmail", {
+      const response = await fetch("https://putlb.localto.net/api/user/sendEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,6 +24,8 @@ const UserDetailModal = (props) => {
           recipientName: `${selectedUser.first_name} ${selectedUser.last_name}`,
           lat: currentUserLoc.latitude,
           lng: currentUserLoc.longitude,
+          time: selectedUser.duration,
+          distance: selectedUser.distance,
         }),
       });
 

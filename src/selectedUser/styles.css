@@ -5,20 +5,32 @@
   h2.selected-donor-heading {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #1E2D50;
+    color: #B6555A;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
+    margin: 20px;
   }
   
   p.selected-donor-info {
     font-size: 16px;
     margin-bottom: 5px;
-    margin-left : 80px;
+    margin-left : 50px;
     font-family: 'Inter', sans-serif;
     line-height: 2;
     font-weight: bold;
-    color: #B6555A;
+    color: #1E2D50;
+    display: flex;
+  align-items: center;
+    
   }
+
+  .info-values{
+    font-weight:400;
+    font-size: 18px;
+    /* margin: 20px; */
+    margin-left: 10px;
+  }
+
   .selected_donor_details{
     height: auto;
     width: auto;

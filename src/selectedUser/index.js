@@ -2,8 +2,14 @@ import React from "react";
 import { useMapContext } from "../MapContext";
 import MapComp from "../map";
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
+
 const SelectedDonorComponent = () => {
   const { selectedUser } = useMapContext();
+  const navigate = useNavigate();
+  const handleBackToSearch = () => {
+    navigate("/searchForm/OrderPage");
+  };
 
   return (
     <>
@@ -12,7 +18,7 @@ const SelectedDonorComponent = () => {
           <h2 className="selected-donor-heading">Selected Donor</h2>
           <p className="selected-donor-info">
             Name :
-            <span>
+            <span className="info-values">
               {" "}
               {selectedUser.first_name} {selectedUser.last_name}
             </span>
@@ -20,19 +26,28 @@ const SelectedDonorComponent = () => {
           <h2 className="selected-donor-heading">Donor Details</h2>
           <div className="selected_donor_details">
             <p className="selected-donor-info">
-              Blood Group: {selectedUser.antigen}
-            </p>
-            <p className="selected-donor-info">Email: {selectedUser.email}</p>
-            <p className="selected-donor-info">
-              Contact Number: {selectedUser.contact}
+              Blood Group:{" "}
+              <span className="info-values">{selectedUser.antigen}</span>
             </p>
             <p className="selected-donor-info">
-              Distance to the donor: {selectedUser.distance}
+              Email:<span className="info-values">{selectedUser.email}</span>
             </p>
             <p className="selected-donor-info">
-              Duration to reach donor : {selectedUser.duration}
+              Contact Number:{" "}
+              <span className="info-values">{selectedUser.contact}</span>
+            </p>
+            <p className="selected-donor-info">
+              Distance to the donor:{" "}
+              <span className="info-values">{selectedUser.distance}</span>
+            </p>
+            <p className="selected-donor-info">
+              Duration to reach donor :{" "}
+              <span className="info-values">{selectedUser.duration}</span>
             </p>
           </div>
+          <button className="back-btn" onClick={handleBackToSearch}>
+            Back to search
+          </button>
         </div>
 
         <div className="order_partition_wrapper">

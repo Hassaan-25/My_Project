@@ -21,6 +21,7 @@
 .service-wrapper {
   padding: 20px;
   height: 128vh;
+  font-family: 'Inter', sans-serif;
 }
 
 .service-partition-wrapper {

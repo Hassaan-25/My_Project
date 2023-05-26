@@ -5,6 +5,7 @@ import { useMapContext } from "../MapContext";
 import UserDetailModal from "../components/UserDetailModal";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function OrderPage() {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -13,6 +14,7 @@ export function OrderPage() {
   const { users } = useSelector((state) => state.usersState);
   const { matrixData } = useSelector((state) => state.matrixState);
   const { updateSelectedUser, removeDirections } = actions;
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleRemoveDirections();
@@ -62,7 +64,10 @@ export function OrderPage() {
     return 0; // If distances and durations are equal, maintain the original order
   });
 
-  console.log(matrixDataArray);
+  const handleBackToSearch = () => {
+    navigate("/Facilities");
+  };
+  // console.log(matrixDataArray);
 
   return (
     <>
@@ -95,6 +100,9 @@ export function OrderPage() {
           {selectedUser && (
             <UserDetailModal isOpen={showModal} onToggle={closeModal} />
           )}
+          <button className="back-btn" onClick={handleBackToSearch}>
+            Back to search
+          </button>
         </div>
         <div className="order_partition_wrapper">
           <div className="mapcontainer">

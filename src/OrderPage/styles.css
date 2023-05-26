@@ -16,6 +16,7 @@
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  font-family: 'Inter', sans-serif;
 }
 
 .name {
@@ -42,7 +43,25 @@
     border-radius: 20px;
     color: white;
     border: 0px;
+    font-family: 'Inter', sans-serif;
 }
+
+.back-btn{
+    cursor: pointer;
+    font-size: 15px;
+    background: #f78a93;
+    border: 1px solid #f07279;
+    color: #fff;
+    padding: 10px 20px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 18px;
+    display: block;
+    font-weight: 600;
+    margin: 20px auto; /* Center the button horizontally */
+
+  
+}
+
 .clear-btn{
   background-color: #1E2D50;
   border-radius: 10px;
