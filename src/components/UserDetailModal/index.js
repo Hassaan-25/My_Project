@@ -14,20 +14,23 @@ const UserDetailModal = (props) => {
 
   const handleSelectDonor = async () => {
     try {
-      const response = await fetch("https://putlb.localto.net/user/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          recipientEmail: selectedUser.email,
-          recipientName: `${selectedUser.first_name} ${selectedUser.last_name}`,
-          lat: currentUserLoc.latitude,
-          lng: currentUserLoc.longitude,
-          time: selectedUser.duration,
-          distance: selectedUser.distance,
-        }),
-      });
+      const response = await fetch(
+        "https://putlb.localto.net/api/user/sendEmail",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            recipientEmail: selectedUser.email,
+            recipientName: `${selectedUser.first_name} ${selectedUser.last_name}`,
+            lat: currentUserLoc.latitude,
+            lng: currentUserLoc.longitude,
+            time: selectedUser.duration,
+            distance: selectedUser.distance,
+          }),
+        }
+      );
 
       if (response.ok) {
         console.log("Email sent successfully");
