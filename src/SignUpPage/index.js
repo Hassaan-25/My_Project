@@ -193,7 +193,7 @@ function SignUpPage(props) {
               className="form__input"
               value={email}
               onChange={(e) => handleInputChange(e)}
-              placeholder="Email"
+              placeholder="Enter Valid Email"
               required
             />
           </div>
@@ -207,7 +207,7 @@ function SignUpPage(props) {
               id="password"
               value={password}
               onChange={(e) => handleInputChange(e)}
-              placeholder="Password"
+              placeholder="Create Password"
               required
             />
           </div>

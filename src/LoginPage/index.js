@@ -51,6 +51,7 @@ function LoginPage(props) {
             value={email}
             required
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter Email"
           />
         </div>
         <div className="input-container">
@@ -61,6 +62,7 @@ function LoginPage(props) {
             value={password}
             required
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter Password"
           />
         </div>
         <div className="button-container">
