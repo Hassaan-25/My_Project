@@ -15,7 +15,7 @@ const UserDetailModal = (props) => {
   const handleSelectDonor = async () => {
     try {
       const response = await fetch(
-        "https://putlb.localto.net/api/user/sendEmail",
+        "https://hemo-fyp-backened.localto.net/api/user/sendEmail",
         {
           method: "POST",
           headers: {
