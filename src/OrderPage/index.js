@@ -12,7 +12,7 @@ export function OrderPage() {
   const [showModal, setShowModal] = useState(false);
   const { actions } = useMapContext();
   const { users } = useSelector((state) => state.usersState);
-  const { matrixData } = useSelector((state) => state.matrixState);
+  // const { matrixData } = useSelector((state) => state.matrixState);
   const { updateSelectedUser, removeDirections } = actions;
   const navigate = useNavigate();
 
@@ -34,35 +34,36 @@ export function OrderPage() {
     setShowModal(false);
   };
 
-  console.log("matrixData", matrixData);
+  // console.log("matrixData", matrixData);
+  function compareUsers(a, b) {
+    // Convert distance strings to numbers
+    const distanceA = parseFloat(a.distance);
+    const distanceB = parseFloat(b.distance);
 
-  console.log(users);
-  const matrixDataArray = Object.values(matrixData);
+    // Convert duration strings to numbers
+    const durationA = parseInt(a.duration);
+    const durationB = parseInt(b.duration);
 
-  // Assuming matrixData is an array containing the objects you provided
-
-  matrixDataArray.sort((a, b) => {
-    const aDistance = parseFloat(a.distance);
-    const bDistance = parseFloat(b.distance);
-    const aDuration = parseFloat(a.duration);
-    const bDuration = parseFloat(b.duration);
-
-    // Compare the distances first
-    if (aDistance < bDistance) {
+    // Compare based on distance
+    if (distanceA < distanceB) {
       return -1;
-    } else if (aDistance > bDistance) {
+    } else if (distanceA > distanceB) {
       return 1;
     }
 
-    // If distances are equal, compare the durations
-    if (aDuration < bDuration) {
+    // If distances are equal, compare based on duration
+    if (durationA < durationB) {
       return -1;
-    } else if (aDuration > bDuration) {
+    } else if (durationA > durationB) {
       return 1;
     }
 
-    return 0; // If distances and durations are equal, maintain the original order
-  });
+    // If both distance and duration are equal, maintain original order
+    return 0;
+  }
+
+  // Sort the users array based on the custom comparison function
+  const sortedUsers = [...users].sort(compareUsers);
 
   const handleBackToSearch = () => {
     navigate("/Facilities");
@@ -74,7 +75,7 @@ export function OrderPage() {
       <div className="Service_wrapper">
         <div className="order_partition_wrapper">
           <h2>Best Donors Found:</h2>
-          {matrixDataArray.map((user, index) => {
+          {sortedUsers.map((user, index) => {
             return (
               <ul key={index}>
                 <li className="list-item">
