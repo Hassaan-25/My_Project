@@ -15,7 +15,7 @@ const UserDetailModal = (props) => {
   const handleSelectDonor = async () => {
     try {
       const response = await fetch(
-        "http://172.174.52.6:443//api/user/sendEmail",
+        "https://hemo-fyp-backened.localto.net/api/user/sendEmail",
         {
           method: "POST",
           headers: {

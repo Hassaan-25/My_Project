@@ -11,7 +11,8 @@ import { setUserLocation } from "../Store/slices/mapState";
 // import { users } from "./static";
 import "./styles.css";
 import { useMapContext } from "../MapContext";
-import { setMatrixData } from "../Store/slices/matrixState";
+// import { setMatrixData } from "../Store/slices/matrixState";
+import { setUsers } from "../Store/slices/usersState";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -64,10 +65,9 @@ function MapPage(props) {
           const service = new window.google.maps.DistanceMatrixService();
           service.getDistanceMatrix(
             {
-              destinations: users.map((user) => ({
-                lat: user.location.latitude,
-                lng: user.location.longitude,
-              })),
+              destinations: users.map(
+                (user) => `${user.location.latitude},${user.location.longitude}`
+              ),
               origins: [
                 { lat: currentUserLoc.latitude, lng: currentUserLoc.longitude },
               ],
@@ -80,14 +80,14 @@ function MapPage(props) {
                   duration: element.duration.text,
                 }));
                 setUserDistances(distances);
-                const mergedObject = {};
-                Object.keys(distances).forEach((index) => {
-                  mergedObject[index] = {
-                    ...distances[index],
+                const mergedArray = [];
+                distances.forEach((distance, index) => {
+                  mergedArray[index] = {
+                    ...distance,
                     ...users[index],
                   };
                 });
-                dispatch(setMatrixData(mergedObject));
+                dispatch(setUsers(mergedArray));
               } else {
                 console.log("Error:", status);
               }
@@ -127,8 +127,8 @@ function MapPage(props) {
             <Marker
               key={user.id}
               position={{
-                lat: user.location.latitude,
-                lng: user.location.longitude,
+                lat: Number(user.location.latitude),
+                lng: Number(user.location.longitude),
               }}
               icon={{
                 url: "https://www.linkpicture.com/q/favicon_41.png",
