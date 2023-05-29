@@ -99,7 +99,7 @@ function MapPage(props) {
       };
       fetchDistances();
     }
-  }, [dispatch, users, isLoaded]);
+  }, [dispatch, isLoaded]);
 
   return isLoaded ? (
     <>
