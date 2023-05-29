@@ -11,8 +11,16 @@
   
   input[type="text"],
   input[type="password"] {
-    height: 25px;
+    height: 30px;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+
+  .pswd-input{
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+
   }
   
   input[type="submit"] {
@@ -53,6 +61,7 @@
   
   .title {
     font-size: 25px;
+    font-weight: 500;
     margin-bottom: 20px;
     text-align: center;
     color: #6A6A6A;
