@@ -44,7 +44,7 @@ function LoginPage(props) {
     <div className="form">
       <form onSubmit={handleformSubmit}>
         <div className="input-container">
-          <label>Username </label>
+          <label>Email: </label>
           <input
             type="text"
             name="uname"
@@ -55,8 +55,9 @@ function LoginPage(props) {
           />
         </div>
         <div className="input-container">
-          <label>Password </label>
+          <label>Password: </label>
           <input
+            className="pswd-input"
             type="password"
             name="pass"
             value={password}

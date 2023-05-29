@@ -31,7 +31,7 @@ color: #7D7D7D;
 
 .navbtn {
   /* display: block; */
-  margin: 10px auto;
+  margin: 15px auto;
   background: #B6555A;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -42,6 +42,10 @@ color: #7D7D7D;
   justify-content: center;
 }
 
+.navbtn:hover {
+  background: #d1424a;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.4);
+}
 
 .icons{
   display: flex;

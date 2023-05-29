@@ -12,9 +12,11 @@ function SignUpPage(props) {
   const [antigen, setAntigen] = useState("");
   const [cityName, setCityName] = useState("");
   const [contact, setContact] = useState("");
+  const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [hasChronicDisease, setHasChronicDisease] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,12 +59,25 @@ function SignUpPage(props) {
     if (id === "contact") {
       setContact(value);
     }
+    if (id === "age") {
+      setAge(value);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords don't match");
+      return;
+    }
+
+    if (parseInt(age) > 50) {
+      alert("Age cannot be greater than 50");
+      return;
+    }
+
+    if (hasChronicDisease) {
+      alert("Form cannot be submitted if the user has a chronic disease");
       return;
     }
 
@@ -182,6 +197,20 @@ function SignUpPage(props) {
               required
             />
           </div>
+          <div className="contact">
+            <label className="form__label" htmlFor="age">
+              Enter Your Age
+            </label>
+            <input
+              className="form__input"
+              type="text"
+              id="age"
+              value={age}
+              onChange={(e) => handleInputChange(e)}
+              placeholder="Enter Age"
+              required
+            />
+          </div>
 
           <div className="email">
             <label className="form__label" htmlFor="email">
@@ -223,6 +252,17 @@ function SignUpPage(props) {
               onChange={(e) => handleInputChange(e)}
               placeholder="Confirm Password"
               required
+            />
+          </div>
+          <div>
+            <label className="form__label" htmlFor="hasChronicDisease">
+              Chronic Disease (Hiv, Aids, Cancer, Hepatitis):
+            </label>
+            <input
+              type="checkbox"
+              id="hasChronicDisease"
+              checked={hasChronicDisease}
+              onChange={(e) => setHasChronicDisease(e.target.checked)}
             />
           </div>
         </div>
